@@ -3,107 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DRAM — Apr 5</title>
+<title>DRAM Briefing</title>
 <style>
-:root {
-  --bg:#0d0d0f; --surf:#16161a; --surf2:#1e1e24;
-  --text:#e8e8f0; --muted:#888899; --border:#2a2a35;
-  --new:#ff4d6d; --gold:#f5a623;
+:root{
+  --bg:#0d0d0f;--surf:#16161a;--surf2:#1c1c22;--border:#2a2a35;
+  --text:#e8e8f0;--muted:#888;--gold:#c8a030;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:15px;line-height:1.5}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px}
 a{color:inherit;text-decoration:none}
 a:hover{text-decoration:underline}
 
-/* Fix 3: compact header — single row on iPhone */
+/* Header */
 .header{
   position:sticky;top:0;z-index:100;
-  background:rgba(13,13,15,.96);backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);
+  background:#0d0d0f;border-bottom:1px solid var(--border);
   display:flex;align-items:center;gap:8px;
   padding:7px 14px;
-  min-height:0;
 }
-.header-title{font-size:16px;font-weight:700;letter-spacing:-.2px;color:#fff;flex-shrink:0}
-/* Fix 3: refresh button — single icon only */
+.header-title{font-size:16px;font-weight:700;color:var(--text);letter-spacing:0.5px}
 .refresh-btn{
-  background:none;border:none;cursor:pointer;
-  color:var(--muted);font-size:15px;padding:2px 4px;
-  flex-shrink:0;line-height:1;
-  transition:color .15s;
+  background:none;border:none;color:var(--muted);cursor:pointer;
+  font-size:18px;line-height:1;padding:2px 4px;
 }
 .refresh-btn:hover{color:var(--text)}
 .chip{
-  background:var(--surf2);border:1px solid var(--border);
-  border-radius:20px;padding:2px 9px;font-size:12px;color:var(--muted);white-space:nowrap;
+  font-size:11px;padding:2px 8px;border-radius:10px;
+  background:var(--surf2);border:1px solid var(--border);color:var(--muted);
+  white-space:nowrap;
 }
-.chip.new-chip{background:#330f15;border-color:var(--new);color:var(--new)}
+.new-chip{background:#3d0f0f;border-color:#7d2020;color:#ff8080}
 .all-read-btn{
-  margin-left:auto;background:var(--surf2);border:1px solid var(--border);
-  color:var(--muted);border-radius:6px;padding:3px 10px;font-size:12px;cursor:pointer;flex-shrink:0;
+  margin-left:auto;background:#1a2a1a;border:1px solid #2a4a2a;
+  color:#80c080;padding:3px 10px;border-radius:6px;cursor:pointer;font-size:12px;
 }
-.all-read-btn:hover{color:var(--text);border-color:#555}
+.all-read-btn:hover{background:#1f3a1f}
 
 /* Tab bar */
 .tab-bar{
-  position:sticky;top:40px;z-index:99;
-  background:rgba(13,13,15,.96);backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--border);
-  display:flex;overflow-x:auto;padding:0 6px;
+  position:sticky;top:37px;z-index:99;
+  background:#0d0d0f;border-bottom:1px solid var(--border);
+  display:flex;overflow-x:auto;gap:2px;padding:4px 8px;
   scrollbar-width:none;
 }
 .tab-bar::-webkit-scrollbar{display:none}
 .tab-bar button{
-  background:none;border:none;color:var(--muted);cursor:pointer;
-  padding:8px 12px;font-size:13px;font-weight:500;white-space:nowrap;
-  border-bottom:2px solid transparent;transition:color .15s,border-color .15s;
-  display:flex;align-items:center;gap:5px;
+  flex-shrink:0;padding:5px 12px;border-radius:6px;
+  border:none;background:var(--surf2);color:var(--muted);
+  cursor:pointer;font-size:12px;white-space:nowrap;
+  transition:all 0.15s;position:relative;
 }
-.tab-bar button:hover{color:var(--text)}
-.tab-bar button.active{color:var(--tc,#5b9bd5);border-bottom-color:var(--tc,#5b9bd5)}
+.tab-bar button.active{background:var(--tc,#117a8b);color:#fff;font-weight:600}
+.tab-bar button:hover:not(.active){background:var(--surf);color:var(--text)}
 .tab-dot{
-  width:6px;height:6px;background:var(--new);border-radius:50%;flex-shrink:0;
+  display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:#ff6060;margin-left:4px;vertical-align:middle;
 }
 
-/* Content */
-.content{padding:12px 16px;max-width:1600px;margin:0 auto}
-.tab-section{display:none}
+/* Tab sections */
+.tab-section{display:none;padding:12px}
 .tab-section.active{display:block}
 
 /* Cards grid */
-.cards-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
-  gap:11px;
-}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
 
 /* Cards */
 .card{
-  background:var(--surf);border:1px solid var(--border);border-radius:10px;
-  padding:12px;display:flex;flex-direction:column;gap:7px;
-  transition:opacity .2s,border-color .15s;
+  background:var(--surf);border:1px solid var(--border);
+  border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;
+  transition:opacity 0.2s;
 }
-.card:hover{border-color:#444}
-.new-card{border-color:#6b2030;cursor:pointer}
-.new-card:hover{border-color:var(--new)}
-.card.read{opacity:.65}
-.ref-card{opacity:.65}
-
+.new-card{border-color:#ff6b6b}
+.card.read{opacity:0.65}
+.ref-card{opacity:0.65}
 .card-header{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .badge{
-  border-radius:4px;padding:2px 7px;font-size:11px;font-weight:600;
+  font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px;
   white-space:nowrap;flex-shrink:0;
 }
 .new-pill{
-  background:var(--new);color:#fff;border-radius:4px;
-  padding:2px 6px;font-size:11px;font-weight:700;letter-spacing:.4px;
+  font-size:10px;font-weight:700;padding:2px 5px;border-radius:3px;
+  background:#7d0000;color:#ff8080;letter-spacing:0.5px;
 }
-.card-date{color:var(--muted);font-size:12px;margin-left:auto}
-.card-title{font-size:14px;font-weight:600;line-height:1.4;color:#f0f0fa}
-.card-title a:hover{color:#fff;text-decoration:underline}
-.card-detail{font-size:13px;color:#b8b8cc;line-height:1.55}
-.card-companies{font-size:12px;color:var(--muted)}
-.card-companies strong{color:#9090a8}
+.card-date{font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap}
+.card-title{font-size:13px;font-weight:600;line-height:1.4;color:var(--text)}
+.card-title a{color:inherit}
+.card-title a:hover{color:#aac4e8}
+.card-detail{font-size:12px;color:#aaa;line-height:1.5}
+.card-companies{font-size:11px;color:var(--muted)}
 .card-note{
   font-size:12px;color:#c8a030;line-height:1.5;
   background:#1a1200;border-left:2px solid var(--gold);
@@ -111,7 +98,7 @@ a:hover{text-decoration:underline}
 }
 .card-note strong{color:var(--gold)}
 
-/* Fix 2: Archive — flat 1-line rows, no collapse headers */
+/* Archive rows */
 .archive-item{
   grid-column:1/-1;
   display:flex;align-items:center;gap:8px;
@@ -123,10 +110,8 @@ a:hover{text-decoration:underline}
   color:#7878a8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   flex:1;min-width:0;
 }
-.archive-item a:hover{color:#b0b0d8;text-decoration:underline}
+.archive-item a:hover{color:#a0a0d8}
 .arc-date{color:var(--muted);font-size:11px;flex-shrink:0;white-space:nowrap}
-
-.empty-tab{grid-column:1/-1;padding:60px 20px;text-align:center;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -134,7 +119,7 @@ a:hover{text-decoration:underline}
 <header class="header">
   <span class="header-title">DRAM</span>
   <button class="refresh-btn" onclick="location.reload()" title="Refresh">⟳</button>
-  <span class="chip new-chip" id="new-count-chip">2 new</span>
+  <span class="chip new-chip" id="new-count-chip">3 new</span>
   <span class="chip">📅 Apr 5</span>
   <button class="all-read-btn" onclick="markAllRead()">✓ All</button>
 </header>
@@ -143,7 +128,7 @@ a:hover{text-decoration:underline}
 <button data-tab="t0" onclick="switchTab(this)" style="--tc:#117a8b">AI Chips<span class="tab-dot" data-dot="t0" style=""></span></button>
 <button data-tab="t1" onclick="switchTab(this)" style="--tc:#148f77">LPDDR / DDR / GDDR<span class="tab-dot" data-dot="t1" style="display:none"></span></button>
 <button data-tab="t2" onclick="switchTab(this)" style="--tc:#7d3c98">HBM<span class="tab-dot" data-dot="t2" style="display:none"></span></button>
-<button data-tab="t3" onclick="switchTab(this)" style="--tc:#6c3483">TSMC / Adv. Pkg<span class="tab-dot" data-dot="t3" style="display:none"></span></button>
+<button data-tab="t3" onclick="switchTab(this)" style="--tc:#6c3483">TSMC / Adv. Pkg<span class="tab-dot" data-dot="t3" style=""></span></button>
 <button data-tab="t4" onclick="switchTab(this)" style="--tc:#2e86c1">Samsung<span class="tab-dot" data-dot="t4" style=""></span></button>
 <button data-tab="t5" onclick="switchTab(this)" style="--tc:#1e8449">Hynix<span class="tab-dot" data-dot="t5" style="display:none"></span></button>
 <button data-tab="t6" onclick="switchTab(this)" style="--tc:#a04000">Micron<span class="tab-dot" data-dot="t6" style="display:none"></span></button>
@@ -151,416 +136,500 @@ a:hover{text-decoration:underline}
 <button data-tab="t7" onclick="switchTab(this)" style="--tc:#9a7d0a">IB Research<span class="tab-dot" data-dot="t7" style=""></span></button>
 </nav>
 
-<main class="content">
 <section id="t0" class="tab-section">
 <div class="cards-grid">
 <article class="card new-card" data-id="u026c41584" onclick="cardClick(this)">
   <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom's Hardware</span><span class="new-pill">NEW</span><span class="card-date">Apr 5</span></div>
   <h3 class="card-title"><a href="https://www.tomshardware.com/tech-industry/memory-will-consume-30-percent-of-hyperscaler-spending-this-year" target="_blank">Memory Will Consume 30% of Hyperscaler AI Data Center Spending in 2026 — 4x Increase vs. 2023</a></h3>
   <p class="card-detail">SemiAnalysis estimates memory will account for ~30% of total hyperscaler capex in 2026, up from ~8% in 2023. Nvidia receives preferential supply terms well below standard market rates. Memory has overtaken compute silicon as the primary cost driver for AI infrastructure buildout, a structural shift analysts project will persist through 2028.</p>
-  <p class="card-companies"><strong>Companies:</strong> Nvidia, Samsung, SK Hynix, Micron, Google, Microsoft, Amazon, Meta</p>
-  <p class="card-note"><strong>Note:</strong> Memory crossing 30% of hyperscaler capex validates the supercycle thesis at macro scale. Nvidia's preferential pricing creates margin asymmetry — other AI customers absorb full spot premiums while Nvidia's H200/B200 economics improve relative to peers.</p>
-</article>
-<article class="card read ref-card" data-id="u67bae2c08">
+  <p class="card-companies">🏢 Nvidia, Samsung, SK Hynix, Micron, Google, Microsoft, Amazon, Meta</p><p class="card-note"><strong>Note:</strong> Memory crossing 30% of hyperscaler capex validates the supercycle thesis at macro scale. Nvidia's preferential pricing creates margin asymmetry — other AI customers absorb full spot premiums while Nvidia's H200/B200 economics improve relative to peers.</p></article>
+<article class="card ref-card read" data-id="u67bae2c08">
   <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="card-date">Apr 2</span></div>
   <h3 class="card-title"><a href="https://www.kedglobal.com/korean-startups/newsView/ked202604020001" target="_blank">Google TurboQuant Boosts AI Memory Efficiency — FuriosaAI CEO Says It Expands, Not Shrinks, Chip Demand</a></h3>
   <p class="card-detail">Google's TurboQuant quantization technique reduces the active memory footprint of AI models, but FuriosaAI CEO June Paik argues it will ultimately increase total demand by making AI economically accessible to a far wider range of deployments. Korean chipmakers broadly hold this view, citing historical precedent from prior efficiency gains that expanded markets rather than contracting them.</p>
-  <p class="card-companies"><strong>Companies:</strong> Google, FuriosaAI, Samsung, SK Hynix</p>
-  <p class="card-note"><strong>Note:</strong> The Jevons paradox has characterized every semiconductor efficiency generation since the transistor. TurboQuant-class optimizations lower inference cost, driving adoption at the margin and net-adding demand — a tailwind for HBM vendors.</p>
-</article>
-<article class="card read ref-card" data-id="ue5529c5e9">
+  <p class="card-companies">🏢 Google, FuriosaAI, Samsung, SK Hynix</p><p class="card-note"><strong>Note:</strong> The Jevons paradox has characterized every semiconductor efficiency generation since the transistor. TurboQuant-class optimizations lower inference cost, driving adoption at the margin and net-adding demand — a tailwind for HBM vendors.</p></article>
+<article class="card ref-card read" data-id="ue5529c5e9">
   <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom's Hardware</span><span class="card-date">Apr 2</span></div>
   <h3 class="card-title"><a href="https://www.tomshardware.com/pc-components/dram/dram-and-nand-contract-prices-to-climb-again-in-q2" target="_blank">DRAM Contract Prices to Jump 63% in Q2, NAND Up 75% — Steepest Back-to-Back Quarterly Increases in History</a></h3>
   <p class="card-detail">TrendForce's Q2 2026 memory pricing survey projects DRAM contract prices +58-63% QoQ and NAND Flash +70-75% QoQ, following Q1's record +90-95% DRAM surge. NAND outpacing DRAM QoQ for the first time signals enterprise SSD demand has become an independent price driver. Hyperscalers hold the bulk of available supply through long-term agreements; consumer channels receive minimal allocation.</p>
-  <p class="card-companies"><strong>Companies:</strong> Samsung, SK Hynix, Micron, Kioxia, Western Digital</p>
-  <p class="card-note"><strong>Note:</strong> NAND QoQ growth exceeding DRAM is significant: enterprise storage demand is now autonomously driving pricing. This extends the upcycle duration and implies NAND ASP upside beyond current consensus models through 2027.</p>
-</article>
-<article class="card read ref-card" data-id="u8c1895de9">
+  <p class="card-companies">🏢 Samsung, SK Hynix, Micron, Kioxia, Western Digital</p><p class="card-note"><strong>Note:</strong> NAND QoQ growth exceeding DRAM is significant: enterprise storage demand is now autonomously driving pricing. This extends the upcycle duration and implies NAND ASP upside beyond current consensus models through 2027.</p></article>
+<article class="card ref-card read" data-id="u8c1895de9">
   <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 28</span></div>
   <h3 class="card-title"><a href="https://x.com/jukan05/status/2038100156256768260" target="_blank">OpenAI's 900K Wafer DRAM Deal Is Only a Non-Binding LOI — Cancellation Rumor Is False</a></h3>
   <p class="card-detail">jukan05 debunked viral rumors that OpenAI canceled massive DRAM orders crashing memory prices. The agreement with Samsung and SK Hynix is a Letter of Intent for ~900,000 DRAM wafers/month — legally non-binding, with no obligation to follow through. Actual OpenAI shipments in 2026 remain minimal versus the headline figure. Contract prices are not collapsing.</p>
-  <p class="card-companies"><strong>Companies:</strong> OpenAI, Samsung, SK Hynix</p>
-  <p class="card-note"><strong>Note:</strong> LOI vs. firm order is the most misunderstood distinction in memory market analysis. The 900K wspm figure is a future aspiration, not current demand. Supply/demand balance remains deeply in sellers' favor through 2026 regardless of this noise.</p>
-</article>
-<article class="card read ref-card" data-id="u040c45132">
+  <p class="card-companies">🏢 OpenAI, Samsung, SK Hynix</p><p class="card-note"><strong>Note:</strong> LOI vs. firm order is the most misunderstood distinction in memory market analysis. The 900K wspm figure is a future aspiration, not current demand. Supply/demand balance remains deeply in sellers' favor through 2026 regardless of this noise.</p></article>
+<article class="card ref-card read" data-id="u040c45132">
   <div class="card-header"><span class="badge" style="background:#12122a;color:#8090d0">SemiAnalysis</span><span class="card-date">Mar 27</span></div>
   <h3 class="card-title"><a href="https://newsletter.semianalysis.com/p/the-great-ai-silicon-shortage" target="_blank">The Great AI Silicon Shortage: Memory Is the Binding Constraint, Not TSMC Fab or CoWoS</a></h3>
   <p class="card-detail">SemiAnalysis identified HBM memory — not TSMC fab capacity or CoWoS packaging — as the current binding constraint on AI accelerator deployment. HBM4 sample qualification timelines are the critical path for Nvidia's Rubin platform schedule. Commodity DRAM demand destruction is accelerating as hyperscaler budgets concentrate on HBM, bifurcating the DRAM market structurally.</p>
-  <p class="card-companies"><strong>Companies:</strong> Nvidia, TSMC, SK Hynix, Samsung, Micron</p>
-  <p class="card-note"><strong>Note:</strong> SemiAnalysis has historically been 1-2 quarters ahead of sell-side consensus on constraint identification. Their focus on HBM4 qualification (not production ramp) as the critical path suggests Rubin could slip 1-2 quarters if SK Hynix HBM4 yields underperform expectations.</p>
-</article>
-<article class="card read ref-card" data-id="u5f0a09fea">
+  <p class="card-companies">🏢 Nvidia, TSMC, SK Hynix, Samsung, Micron</p><p class="card-note"><strong>Note:</strong> SemiAnalysis has historically been 1-2 quarters ahead of sell-side consensus on constraint identification. Their focus on HBM4 qualification (not production ramp) as the critical path suggests Rubin could slip 1-2 quarters if SK Hynix HBM4 yields underperform expectations.</p></article>
+<article class="card ref-card read" data-id="ub0b612ebc">
+  <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="card-date">Mar 18</span></div>
+  <h3 class="card-title"><a href="https://www.kedglobal.com/shareholder-value/newsView/ked202603230004_amd" target="_blank">Samsung signs HBM4 supply MOU with AMD at GTC 2026</a></h3>
+  <p class="card-detail">Samsung DS head Jun Young-hyun and AMD CEO Lisa Su signed HBM4 supply MOU on March 18. AMD MI450/MI400 accelerators will use Samsung HBM4.</p>
+  <p class="card-companies">🏢 Samsung, AMD</p><p class="card-note"><strong>Note:</strong> GTC 2026 key inflection; AMD diversifying from SKH dependency</p></article>
+<article class="card ref-card read" data-id="u5f0a09fea">
   <div class="card-header"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span><span class="card-date">Mar 18</span></div>
   <h3 class="card-title"><a href="https://www.trendforce.com/news/2026/03/18/news-nvidia-rubin-ultra-and-feynman-reportedly-to-boost-tsmc-soic-besi-applied-materials-tel-to-benefit/" target="_blank">Nvidia Rubin Ultra and Feynman to Drive TSMC SoIC Expansion — Besi, Applied Materials, TEL Key Beneficiaries</a></h3>
   <p class="card-detail">Nvidia's Rubin Ultra and next-gen Feynman AI accelerators are expected to significantly expand TSMC's SoIC (System on Integrated Chips) hybrid bonding capacity. SoIC enables die-to-die stacking without interposers, critical for Nvidia's multi-die chiplet strategy. Equipment makers Besi, Applied Materials, and Tokyo Electron are the primary beneficiaries of SoIC capacity buildout through 2027.</p>
-  <p class="card-companies"><strong>Companies:</strong> Nvidia, TSMC, Besi, Applied Materials, Tokyo Electron</p>
-  <p class="card-note"><strong>Note:</strong> SoIC hybrid bonding adoption with Rubin Ultra and Feynman solidifies TSMC's advanced packaging monopoly for leading AI compute. For AI chip makers evaluating custom silicon, SoIC-compatible chip architecture is becoming a baseline requirement rather than a differentiator.</p>
-</article>
-<article class="card read ref-card" data-id="u0a3d72707">
+  <p class="card-companies">🏢 Nvidia, TSMC, Besi, Applied Materials, Tokyo Electron</p><p class="card-note"><strong>Note:</strong> SoIC hybrid bonding adoption with Rubin Ultra and Feynman solidifies TSMC's advanced packaging monopoly for leading AI compute. For AI chip makers evaluating custom silicon, SoIC-compatible chip architecture is becoming a baseline requirement rather than a differentiator.</p></article>
+<article class="card ref-card read" data-id="uc2ec35fc2">
+  <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="card-date">Mar 16</span></div>
+  <h3 class="card-title"><a href="https://www.kedglobal.com/shareholder-value/newsView/ked202603230004" target="_blank">SK Hynix Chairman: memory supply 20% below demand through 2030</a></h3>
+  <p class="card-detail">SK Group Chairman Chey Tae-won warned at GTC 2026 (Mar 16) that global memory supply will remain ~20% below demand through 2030. Met Jensen Huang at the event. SK Hynix to announce additional expansion plans.</p>
+  <p class="card-companies">🏢 SK Hynix, Nvidia</p><p class="card-note"><strong>Note:</strong> Most important macro call of the cycle — from the largest HBM supplier</p></article>
+<article class="card ref-card read" data-id="u0a3d72707">
   <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 12</span></div>
   <h3 class="card-title"><a href="https://x.com/jukan05/status/2032368872255598793" target="_blank">Meta Struggles to Secure HBM for Its MTIA AI Chips Despite Unveiling Four-Generation Roadmap</a></h3>
   <p class="card-detail">Meta launched its MTIA chip roadmap (MTIA 300 at 216GB HBM, MTIA 400 at 288GB, MTIA 450, MTIA 500) but is reportedly unable to secure sufficient HBM supply — Samsung and SK Hynix capacity is committed to Nvidia, Google, and Microsoft through 2026. Meta faces a potential 6-12 month delay in scaling its proprietary AI infrastructure to target volumes.</p>
-  <p class="card-companies"><strong>Companies:</strong> Meta, Samsung, SK Hynix, Nvidia, Google, Microsoft</p>
-  <p class="card-note"><strong>Note:</strong> Meta's HBM squeeze illustrates the structural penalty for late contract commitment. Companies that locked in 2024 supply agreements for 2026 delivery are gatekeepers to AI compute scale. Latecomers face allocation queues, not market rates, and the queue does not clear until 2027.</p>
-</article>
+  <p class="card-companies">🏢 Meta, Samsung, SK Hynix, Nvidia, Google, Microsoft</p><p class="card-note"><strong>Note:</strong> Meta's HBM squeeze illustrates the structural penalty for late contract commitment. Companies that locked in 2024 supply agreements for 2026 delivery are gatekeepers to AI compute scale. Latecomers face allocation queues, not market rates, and the queue does not clear until 2027.</p></article>
+<article class="card ref-card read" data-id="ub4db64b01">
+  <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="card-date">Mar 8</span></div>
+  <h3 class="card-title"><a href="https://www.kedglobal.com/korean-chipmakers/newsView/ked202603080004" target="_blank">Nvidia Vera Rubin: Samsung & SK Hynix sole HBM4 suppliers</a></h3>
+  <p class="card-detail">Industry officials confirm only Samsung and SK Hynix will supply HBM4 for Nvidia's Vera Rubin. Rubin Ultra targets 512GB HBM4E per GPU module. Full NVL576 system may need 1TB.</p>
+  <p class="card-companies">🏢 Nvidia, Samsung, SK Hynix</p><p class="card-note"><strong>Note:</strong> Vera Rubin timeline is the most important near-term catalyst for HBM demand</p></article>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span> <a href="https://x.com/jukan05/status/2005164723697057820" target="_blank">Nvidia requested 16-Hi HBM4 from all 3 suppliers by Q4 2026</a><span class="arc-date">Mar 5</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#200a0a;color:#e05050">Tom's Hardware</span> <a href="https://www.tomshardware.com/pc-components/ram/memory-prices-now-shifting-hourly-as-smaller-firms-fight-over-scraps" target="_blank">AI Memory Crunch Forces DRAM Market into 'Hourly Pricing' — 190,000 Small Businesses Priced Out</a><span class="arc-date">Mar 4</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/news/2026/02/25/news-nvidia-gtc-2026-in-focus-feynman-reportedly-on-tsmc-a16-samsung-sk-hynix-to-showcase-hbm4/" target="_blank">Nvidia GTC 2026 Preview: Feynman on TSMC A16, Samsung and SK Hynix to Showcase HBM4</a><span class="arc-date">Feb 25</span></div>
-</div></section>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#12122a;color:#8090d0">SemiAnalysis</span> <a href="https://newsletter.semianalysis.com/p/vera-rubin-extreme-co-design-an-evolution" target="_blank">SemiAnalysis Vera Rubin deep dive: cableless design, 6 co-designed chips, HBM4 at 22TB/s</a><span class="arc-date">Feb 25</span></div>
+</div>
+</section>
 <section id="t1" class="tab-section">
 <div class="cards-grid">
-<article class="card read ref-card" data-id="uac8fc2c51">
-  <div class="card-header"><span class="badge" style="background:#0a1426;color:#5090d0">Samsung Semiconductor</span><span class="card-date">Mar 28</span></div>
+<article class="card ref-card read" data-id="u9851e6918">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Apr 2</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2039649540085886996" target="_blank">DRAM ETF (NYSE: DRAM) Begins Trading — Direct Investment Vehicle for the Memory Supercycle</a></h3>
+  <p class="card-detail">jukan05 notes the Roundhill Memory ETF (NYSE: DRAM) began trading with roughly 75% of its portfolio in Samsung, SK Hynix, and Micron, making it an effective direct proxy for the memory supercycle thesis. For overseas retail investors who face barriers buying Korean stocks directly, this ETF offers accessible exposure. jukan05 highlights the fund's HBM-heavy weighting as particularly meaningful.</p>
+  <p class="card-companies">🏢 Samsung, SK Hynix, Micron, Roundhill Investments</p><p class="card-note"><strong>Note:</strong> Passive ETF inflows mechanically amplify memory-sector momentum during up-cycles. Watch DRAM ETF AUM growth as a secondary signal for institutional conviction in the supercycle thesis.</p></article>
+<article class="card ref-card read" data-id="u3d29848d2">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Apr 2</span></div>
+  <h3 class="card-title"><a href="https://www.ubergizmo.com/2026/04/apple-cornering-mobile-dram/" target="_blank">Apple cornering mobile DRAM market — starving Android OEMs</a></h3>
+  <p class="card-detail">Apple using cash balance sheet to buy all available LPDDR at elevated prices. MediaTek & Qualcomm cut 4nm production 20K–30K wafers = 15–20M fewer mobile processors. Samsung raised Galaxy S25 Edge / foldable prices.</p>
+  <p class="card-companies">🏢 Apple, Samsung, Micron, MediaTek, Qualcomm</p><p class="card-note"><strong>Note:</strong> Critical downstream — mobile processor supply crunch may hit Q2/Q3 device availability</p></article>
+<article class="card ref-card read" data-id="ue6601b226">
+  <div class="card-header"><span class="badge" style="background:#1a0d2b;color:#b07fd4">X/@mingchikuo</span><span class="card-date">Apr 2</span></div>
+  <h3 class="card-title"><a href="https://www.ubergizmo.com/2026/04/apple-cornering-mobile-dram/#kuo" target="_blank">Kuo: Apple absorbing high component costs to expand market share</a></h3>
+  <p class="card-detail">Ming-Chi Kuo noted Apple can expand market share by absorbing elevated component costs even at expense of margins. Strategy visible in MacBook Neo $599 launch targeting $30B mid-range laptop market (50M units/year).</p>
+  <p class="card-companies">🏢 Apple, Samsung, Micron</p><p class="card-note"><strong>Note:</strong> Kuo framing: Apple treating memory supply as competitive weapon, not just cost input</p></article>
+<article class="card ref-card read" data-id="uac8fc2c51">
+  <div class="card-header"><span class="badge" style="background:#1e1400;color:#e0a030">Samsung Semiconductor</span><span class="card-date">Mar 28</span></div>
   <h3 class="card-title"><a href="https://semiconductor.samsung.com/news-events/tech-blog/introducing-samsungs-socamm2-new-lpddr-memory-module-empowering-next-generation-ai-infrastructure/" target="_blank">Samsung SOCAMM2: Next-Gen LPDDR Module for AI Infrastructure Delivering 2x Bandwidth at 55% Lower Power</a></h3>
   <p class="card-detail">Samsung's SOCAMM2 packs four LPDDR5X chips in a compressed form factor delivering more than 2x the bandwidth of traditional RDIMMs while reducing power consumption by 55%. The module targets AI inference servers and edge deployments where LPDDR power-per-bit advantage over DDR5 is most impactful. Samsung is ramping SOCAMM2 volume production in 2026 for Nvidia's N1X AI PC platform.</p>
-  <p class="card-companies"><strong>Companies:</strong> Samsung, Nvidia</p>
-  <p class="card-note"><strong>Note:</strong> SOCAMM2 power efficiency is the primary differentiator for inference workloads at the edge. As AI inference moves beyond hyperscalers to enterprise and edge servers, power-per-TOPS becomes as important as raw bandwidth — SOCAMM2 is well-positioned for this structural shift.</p>
-</article>
-<article class="card read ref-card" data-id="uc1d5d4071">
+  <p class="card-companies">🏢 Samsung, Nvidia</p><p class="card-note"><strong>Note:</strong> SOCAMM2 power efficiency is the primary differentiator for inference workloads at the edge. As AI inference moves beyond hyperscalers to enterprise and edge servers, power-per-TOPS becomes as important as raw bandwidth — SOCAMM2 is well-positioned for this structural shift.</p></article>
+<article class="card ref-card read" data-id="uc1d5d4071">
   <div class="card-header"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span><span class="card-date">Mar 25</span></div>
   <h3 class="card-title"><a href="https://www.trendforce.com/news/2026/03/25/insights-memory-spot-price-update-dram-spot-momentum-constrained-as-march-contracts-hold-ddr4-weakest/" target="_blank">DRAM Spot Momentum Stalls in Late March — DDR4 Weakest as DDR5 and HBM Contracts Continue Climbing</a></h3>
   <p class="card-detail">DRAM spot market momentum stalled in the final week of March as DDR4 spot dipped 0.29% WoW to $34.00 while DDR5 and HBM contract prices continued rising. Spot prices for DDR5 are already trading above some contract benchmarks, signaling Q2 contract negotiations will push higher. TrendForce notes a deepening bifurcation between legacy (DDR4) and current-gen DRAM pricing.</p>
-  <p class="card-companies"><strong>Companies:</strong> Samsung, SK Hynix, Micron</p>
-  <p class="card-note"><strong>Note:</strong> DDR4 spot weakness amid a broader DRAM bull market signals a critical bifurcation. Companies with significant DDR4 inventory face potential write-downs even as their HBM and DDR5 lines achieve record margins. The two-tier DRAM market is structural, not cyclical.</p>
-</article>
-<article class="card read ref-card" data-id="u546f76fae">
+  <p class="card-companies">🏢 Samsung, SK Hynix, Micron</p><p class="card-note"><strong>Note:</strong> DDR4 spot weakness amid a broader DRAM bull market signals a critical bifurcation. Companies with significant DDR4 inventory face potential write-downs even as their HBM and DDR5 lines achieve record margins. The two-tier DRAM market is structural, not cyclical.</p></article>
+<article class="card ref-card read" data-id="ue97a5f4d3">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 14</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2026592400584618433" target="_blank">Samsung DS raised LPDDR5X price to Apple by 100% — accepted on the spot</a></h3>
+  <p class="card-detail">Samsung DS originally planned a 60% increase for Apple iPhone 17 LPDDR5X. Opened at 100%; Apple accepted immediately without counter-negotiating. 'How desperate smartphone makers are to secure memory inventory.'</p>
+  <p class="card-companies">🏢 Samsung, Apple, Micron</p><p class="card-note"><strong>Note:</strong> 100% price acceptance = extreme supply tightness; watch iPhone 17 BOM impact</p></article>
+<article class="card ref-card read" data-id="u546f76fae">
   <div class="card-header"><span class="badge" style="background:#0a1f0a;color:#4dc728">SK Hynix Newsroom</span><span class="card-date">Mar 10</span></div>
   <h3 class="card-title"><a href="https://news.skhynix.com/1c-lpddr6-development-2026/" target="_blank">SK Hynix Develops World's First 1c LPDDR6 — 10.7 Gbps, 33% Faster and 20% More Efficient Than LPDDR5X</a></h3>
   <p class="card-detail">SK Hynix announced the development of 16Gb 1c (6th-gen 10nm-class) LPDDR6 achieving 10.7 Gbps — 33% faster and 20% more power-efficient than LPDDR5X. The chip features a sub-channel architecture and Dynamic Voltage/Frequency Scaling for on-device AI workloads. Mass production preparations target H1 2026 with customer shipments in H2 2026.</p>
-  <p class="card-companies"><strong>Companies:</strong> SK Hynix</p>
-  <p class="card-note"><strong>Note:</strong> LPDDR6 at 10.7 Gbps with 20% power efficiency gain is a meaningful inflection for on-device AI — enabling flagship smartphones and edge inference devices to run larger models without thermal throttling. SK Hynix's first-mover position here mirrors its HBM4 lead in the data center segment.</p>
-</article>
+  <p class="card-companies">🏢 SK Hynix</p><p class="card-note"><strong>Note:</strong> LPDDR6 at 10.7 Gbps with 20% power efficiency gain is a meaningful inflection for on-device AI — enabling flagship smartphones and edge inference devices to run larger models without thermal throttling. SK Hynix's first-mover position here mirrors its HBM4 lead in the data center segment.</p></article>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#200a0a;color:#e05050">Tom's Hardware</span> <a href="https://www.tomshardware.com/pc-components/ram/memory-prices-now-shifting-hourly-as-smaller-firms-fight-over-scraps" target="_blank">AI Memory Crunch Forces DRAM Market into 'Hourly Pricing' — 190,000 Small Businesses Priced Out</a><span class="arc-date">Mar 4</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1526;color:#3a8dc0">Micron IR</span> <a href="https://investors.micron.com/news-releases/news-release-details/micron-sets-new-benchmark-worlds-first-high-capacity-256gb" target="_blank">Micron Sets New Benchmark with World's First 256GB LPDDR5X SOCAMM2 — Highest-Capacity LPDRAM Module</a><span class="arc-date">Mar 3</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/news/2026/02/26/news-apple-reportedly-eyes-chinese-memory-as-leverage-against-samsung-and-sk-hynix-amid-rising-costs/" target="_blank">Apple Reportedly Eyes Chinese CXMT Memory as Leverage Against Samsung and SK Hynix Amid Rising Costs</a><span class="arc-date">Feb 26</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span> <a href="https://x.com/jukan05/status/2018916685957452011" target="_blank">GF Securities: LPDDR and NAND Price Hikes Forcing Smartphone Makers to Downgrade Specs</a><span class="arc-date">Feb 5</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span> <a href="https://x.com/jukan05/status/2016024794312147358" target="_blank">Even 'Whale' Apple Surrenders — Samsung and SK Hynix Hike iPhone LPDDR Prices by Up to 100% QoQ</a><span class="arc-date">Jan 27</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/news/2026/01/27/news-samsung-may-raise-iphone-lpddr-prices-by-over-80-qoq-sk-hynix-reportedly-near-100-increase" target="_blank">Samsung May Raise iPhone LPDDR Prices Over 80% QoQ; SK Hynix Seeking ~100% Increase</a><span class="arc-date">Jan 27</span></div>
-</div></section>
+</div>
+</section>
 <section id="t2" class="tab-section">
 <div class="cards-grid">
-<article class="card read ref-card" data-id="u8c1895de9">
+<article class="card ref-card read" data-id="u8c1895de9">
   <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 28</span></div>
   <h3 class="card-title"><a href="https://x.com/jukan05/status/2038100156256768260" target="_blank">OpenAI's 900K Wafer DRAM Deal Is Only a Non-Binding LOI — Cancellation Rumor Is False</a></h3>
   <p class="card-detail">jukan05 debunked viral rumors that OpenAI canceled massive DRAM orders crashing memory prices. The agreement with Samsung and SK Hynix is a Letter of Intent for ~900,000 DRAM wafers/month — legally non-binding, with no obligation to follow through. Actual OpenAI shipments in 2026 remain minimal versus the headline figure. Contract prices are not collapsing.</p>
-  <p class="card-companies"><strong>Companies:</strong> OpenAI, Samsung, SK Hynix</p>
-  <p class="card-note"><strong>Note:</strong> LOI vs. firm order is the most misunderstood distinction in memory market analysis. The 900K wspm figure is a future aspiration, not current demand. Supply/demand balance remains deeply in sellers' favor through 2026 regardless of this noise.</p>
-</article>
-<article class="card read ref-card" data-id="u040c45132">
+  <p class="card-companies">🏢 OpenAI, Samsung, SK Hynix</p><p class="card-note"><strong>Note:</strong> LOI vs. firm order is the most misunderstood distinction in memory market analysis. The 900K wspm figure is a future aspiration, not current demand. Supply/demand balance remains deeply in sellers' favor through 2026 regardless of this noise.</p></article>
+<article class="card ref-card read" data-id="uc4a205034">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 28</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2035294342961823782" target="_blank">Samsung HBM4E at 16 Gbps forces SKH to evaluate TSMC 3nm</a></h3>
+  <p class="card-detail">Samsung's HBM4E: 16 Gbps (+23% vs HBM4), same power, improved 4nm. SKH's HBM4E originally on 12nm; now evaluating 3nm switch. TSMC 3nm costs 4–5× vs 12nm.</p>
+  <p class="card-companies">🏢 Samsung, SK Hynix, TSMC</p><p class="card-note"><strong>Note:</strong> Node competition on base die accelerating; HBM arms race intensifying</p></article>
+<article class="card ref-card read" data-id="u040c45132">
   <div class="card-header"><span class="badge" style="background:#12122a;color:#8090d0">SemiAnalysis</span><span class="card-date">Mar 27</span></div>
   <h3 class="card-title"><a href="https://newsletter.semianalysis.com/p/the-great-ai-silicon-shortage" target="_blank">The Great AI Silicon Shortage: Memory Is the Binding Constraint, Not TSMC Fab or CoWoS</a></h3>
   <p class="card-detail">SemiAnalysis identified HBM memory — not TSMC fab capacity or CoWoS packaging — as the current binding constraint on AI accelerator deployment. HBM4 sample qualification timelines are the critical path for Nvidia's Rubin platform schedule. Commodity DRAM demand destruction is accelerating as hyperscaler budgets concentrate on HBM, bifurcating the DRAM market structurally.</p>
-  <p class="card-companies"><strong>Companies:</strong> Nvidia, TSMC, SK Hynix, Samsung, Micron</p>
-  <p class="card-note"><strong>Note:</strong> SemiAnalysis has historically been 1-2 quarters ahead of sell-side consensus on constraint identification. Their focus on HBM4 qualification (not production ramp) as the critical path suggests Rubin could slip 1-2 quarters if SK Hynix HBM4 yields underperform expectations.</p>
-</article>
-<article class="card read ref-card" data-id="ua176337af">
+  <p class="card-companies">🏢 Nvidia, TSMC, SK Hynix, Samsung, Micron</p><p class="card-note"><strong>Note:</strong> SemiAnalysis has historically been 1-2 quarters ahead of sell-side consensus on constraint identification. Their focus on HBM4 qualification (not production ramp) as the critical path suggests Rubin could slip 1-2 quarters if SK Hynix HBM4 yields underperform expectations.</p></article>
+<article class="card ref-card read" data-id="ua176337af">
   <div class="card-header"><span class="badge" style="background:#12122a;color:#8090d0">SemiAnalysis</span><span class="card-date">Mar 27</span></div>
   <h3 class="card-title"><a href="https://semianalysis.com/memory-model/" target="_blank">Memory Model Update: HBM4 Custom Base Dies — What Accelerator Makers Are Doing Differently</a></h3>
   <p class="card-detail">SemiAnalysis updated its memory model to reflect HBM4's architectural shift to custom base dies per customer, allowing Nvidia, Google, and AMD to optimize HBM4 logic-die configurations for their specific compute architectures. This marks the end of one-size-fits-all HBM supply and introduces a new tier of differentiation between HBM vendors' technical capabilities.</p>
-  <p class="card-companies"><strong>Companies:</strong> SK Hynix, Samsung, Micron, Nvidia, Google, AMD</p>
-  <p class="card-note"><strong>Note:</strong> Custom HBM4 base dies mean each major AI accelerator vendor gets architecturally distinct memory — creating vendor lock-in dynamics similar to custom TSMC process nodes. Switching HBM suppliers mid-generation becomes technically costly, benefiting the first-mover HBM4 qualification winner.</p>
-</article>
-<article class="card read ref-card" data-id="uc1d5d4071">
+  <p class="card-companies">🏢 SK Hynix, Samsung, Micron, Nvidia, Google, AMD</p><p class="card-note"><strong>Note:</strong> Custom HBM4 base dies mean each major AI accelerator vendor gets architecturally distinct memory — creating vendor lock-in dynamics similar to custom TSMC process nodes. Switching HBM suppliers mid-generation becomes technically costly, benefiting the first-mover HBM4 qualification winner.</p></article>
+<article class="card ref-card read" data-id="uc1d5d4071">
   <div class="card-header"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span><span class="card-date">Mar 25</span></div>
   <h3 class="card-title"><a href="https://www.trendforce.com/news/2026/03/25/insights-memory-spot-price-update-dram-spot-momentum-constrained-as-march-contracts-hold-ddr4-weakest/" target="_blank">DRAM Spot Momentum Stalls in Late March — DDR4 Weakest as DDR5 and HBM Contracts Continue Climbing</a></h3>
   <p class="card-detail">DRAM spot market momentum stalled in the final week of March as DDR4 spot dipped 0.29% WoW to $34.00 while DDR5 and HBM contract prices continued rising. Spot prices for DDR5 are already trading above some contract benchmarks, signaling Q2 contract negotiations will push higher. TrendForce notes a deepening bifurcation between legacy (DDR4) and current-gen DRAM pricing.</p>
-  <p class="card-companies"><strong>Companies:</strong> Samsung, SK Hynix, Micron</p>
-  <p class="card-note"><strong>Note:</strong> DDR4 spot weakness amid a broader DRAM bull market signals a critical bifurcation. Companies with significant DDR4 inventory face potential write-downs even as their HBM and DDR5 lines achieve record margins. The two-tier DRAM market is structural, not cyclical.</p>
-</article>
-<article class="card read ref-card" data-id="uad6bf3374">
+  <p class="card-companies">🏢 Samsung, SK Hynix, Micron</p><p class="card-note"><strong>Note:</strong> DDR4 spot weakness amid a broader DRAM bull market signals a critical bifurcation. Companies with significant DDR4 inventory face potential write-downs even as their HBM and DDR5 lines achieve record margins. The two-tier DRAM market is structural, not cyclical.</p></article>
+<article class="card ref-card read" data-id="uad6bf3374">
   <div class="card-header"><span class="badge" style="background:#1e1500;color:#d47c35">Digitimes</span><span class="card-date">Mar 25</span></div>
   <h3 class="card-title"><a href="https://www.digitimes.com/news/a20260325PD229/sk-hynix-3nm-tsmc-samsung-production.html" target="_blank">SK Hynix Evaluating TSMC 3nm for HBM4E Logic Die to Close Samsung's Performance Gap</a></h3>
   <p class="card-detail">SK Hynix is actively evaluating whether to move its HBM4E logic die production to TSMC's 3nm process, a shift from its current in-house 4nm node. Adopting TSMC 3nm would close the power efficiency gap with Samsung's HBM4E architecture. A 3nm logic die enables 10-15% better power efficiency per GB/s — a critical metric for Nvidia's Feynman accelerator platform requirements.</p>
-  <p class="card-companies"><strong>Companies:</strong> SK Hynix, TSMC, Samsung, Nvidia</p>
-  <p class="card-note"><strong>Note:</strong> SK Hynix outsourcing HBM4E logic to TSMC marks a structural shift in vertical integration strategy. This benefits TSMC's advanced packaging revenue while signaling SK Hynix prioritizes performance differentiation over manufacturing cost control in the HBM race.</p>
-</article>
-<article class="card read ref-card" data-id="ue04a9d902">
+  <p class="card-companies">🏢 SK Hynix, TSMC, Samsung, Nvidia</p><p class="card-note"><strong>Note:</strong> SK Hynix outsourcing HBM4E logic to TSMC marks a structural shift in vertical integration strategy. This benefits TSMC's advanced packaging revenue while signaling SK Hynix prioritizes performance differentiation over manufacturing cost control in the HBM race.</p></article>
+<article class="card ref-card read" data-id="ue04a9d902">
   <div class="card-header"><span class="badge" style="background:#0a1f0a;color:#4dc728">SK Hynix Newsroom</span><span class="card-date">Mar 24</span></div>
   <h3 class="card-title"><a href="https://news.skhynix.com/sk-hynix-ships-world-first-12-layer-hbm4-samples-to-customers/" target="_blank">SK Hynix Ships World's First 12-Layer HBM4 Samples at 11.7 Gbps — Targeting Nvidia Rubin Platform</a></h3>
   <p class="card-detail">SK Hynix confirmed shipment of 12-layer HBM4 samples achieving 11.7 Gbps — the industry's fastest HBM speed — to key customers including Nvidia. A 16-layer 48GB HBM4 variant is in development targeting H2 2026 mass production, aligned with Nvidia's Rubin GPU schedule. The 12-layer 36GB version is the baseline Rubin NVL72 configuration.</p>
-  <p class="card-companies"><strong>Companies:</strong> SK Hynix, Nvidia</p>
-  <p class="card-note"><strong>Note:</strong> 11.7 Gbps × 1,024-bit bus = 1.5 TB/s per HBM4 stack. Rubin NVL72 with 8 stacks delivers 12 TB/s total — enabling qualitatively new capabilities for inference on 100B+ parameter models at feasible power envelopes.</p>
-</article>
-<article class="card read ref-card" data-id="u28b528065">
+  <p class="card-companies">🏢 SK Hynix, Nvidia</p><p class="card-note"><strong>Note:</strong> 11.7 Gbps × 1,024-bit bus = 1.5 TB/s per HBM4 stack. Rubin NVL72 with 8 stacks delivers 12 TB/s total — enabling qualitatively new capabilities for inference on 100B+ parameter models at feasible power envelopes.</p></article>
+<article class="card ref-card read" data-id="uefae05d81">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 10</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2020679657792901512" target="_blank">Nvidia Vera Rubin HBM4: SKH mid-50%, Samsung mid-20%, Micron ~20%</a></h3>
+  <p class="card-detail">Nvidia set preliminary splits in Dec 2025. Samsung passed qual first at 11.7 Gbps. Note: SemiAnalysis calls Micron share 0% vs jukan05's ~20% — conflicting data points to monitor.</p>
+  <p class="card-companies">🏢 SK Hynix, Samsung, Micron, Nvidia</p><p class="card-note"><strong>Note:</strong> ⚠️ Conflicting data: jukan05 ~20% vs SemiAnalysis 0% for Micron — track for resolution</p></article>
+<article class="card ref-card read" data-id="u28b528065">
   <div class="card-header"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span><span class="card-date">Mar 9</span></div>
   <h3 class="card-title"><a href="https://www.trendforce.com/news/2026/03/09/news-samsung-sk-hynix-reportedly-tapped-as-nvidia-rubin-hbm4-suppliers-shipments-could-start-in-march/" target="_blank">Samsung and SK Hynix Confirmed as Sole Nvidia Rubin HBM4 Suppliers — Micron Excluded, Shipments Starting March</a></h3>
   <p class="card-detail">TrendForce confirmed Samsung and SK Hynix as the only two HBM4 suppliers for Nvidia's Vera Rubin AI accelerator — Micron has been excluded from the flagship platform. SK Hynix holds approximately 70% of Rubin's HBM4 allocation; Samsung holds 30%. Samsung began commercial HBM4 shipments in February; SK Hynix commercial shipments started in March. Rubin GPUs incorporate 8 HBM4 stacks per chip for 288GB total.</p>
-  <p class="card-companies"><strong>Companies:</strong> Nvidia, Samsung, SK Hynix, Micron</p>
-  <p class="card-note"><strong>Note:</strong> Micron's exclusion from Rubin's initial HBM4 allocation is a critical near-term revenue risk. With Rubin targeting H2 2026 launch and Micron's HBM4 qualification still underway, Micron could miss the initial Rubin cycle entirely — a $3-5B revenue headwind relative to the SK Hynix baseline.</p>
-</article>
+  <p class="card-companies">🏢 Nvidia, Samsung, SK Hynix, Micron</p><p class="card-note"><strong>Note:</strong> Micron's exclusion from Rubin's initial HBM4 allocation is a critical near-term revenue risk. With Rubin targeting H2 2026 launch and Micron's HBM4 qualification still underway, Micron could miss the initial Rubin cycle entirely — a $3-5B revenue headwind relative to the SK Hynix baseline.</p></article>
+<article class="card ref-card read" data-id="ub4db64b01">
+  <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="card-date">Mar 8</span></div>
+  <h3 class="card-title"><a href="https://www.kedglobal.com/korean-chipmakers/newsView/ked202603080004" target="_blank">Nvidia Vera Rubin: Samsung & SK Hynix sole HBM4 suppliers</a></h3>
+  <p class="card-detail">Industry officials confirm only Samsung and SK Hynix will supply HBM4 for Nvidia's Vera Rubin. Rubin Ultra targets 512GB HBM4E per GPU module. Full NVL576 system may need 1TB.</p>
+  <p class="card-companies">🏢 Nvidia, Samsung, SK Hynix</p><p class="card-note"><strong>Note:</strong> Vera Rubin timeline is the most important near-term catalyst for HBM demand</p></article>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span> <a href="https://x.com/jukan05/status/2005164723697057820" target="_blank">Nvidia requested 16-Hi HBM4 from all 3 suppliers by Q4 2026</a><span class="arc-date">Mar 5</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#1f1800;color:#d4a535">SemiWiki</span> <a href="https://semiwiki.com/forum/threads/samsung-enlarges-1c-dram-die-size-yields-stuck-at-60.24623/" target="_blank">Samsung Enlarges 1c DRAM Die Size, HBM4 Yields Stuck at ~60% — Elevated Ramp Risk</a><span class="arc-date">Feb 27</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/news/2026/02/26/news-memory-giants-hbm-cleanroom-race-samsung-sk-hynix-fast-track-micron-acquires/" target="_blank">Memory Giants' HBM Cleanroom Race: Samsung and SK Hynix Fast-Track Expansions, Micron Acquires Land</a><span class="arc-date">Feb 26</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/news/2026/02/25/news-nvidia-gtc-2026-in-focus-feynman-reportedly-on-tsmc-a16-samsung-sk-hynix-to-showcase-hbm4/" target="_blank">Nvidia GTC 2026 Preview: Feynman on TSMC A16, Samsung and SK Hynix to Showcase HBM4</a><span class="arc-date">Feb 25</span></div>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#12122a;color:#8090d0">SemiAnalysis</span> <a href="https://newsletter.semianalysis.com/p/vera-rubin-extreme-co-design-an-evolution" target="_blank">SemiAnalysis Vera Rubin deep dive: cableless design, 6 co-designed chips, HBM4 at 22TB/s</a><span class="arc-date">Feb 25</span></div>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#12122a;color:#8090d0">SemiAnalysis</span> <a href="https://newsletter.semianalysis.com/p/vera-rubin-extreme-co-design-an-evolution#hbm4-split" target="_blank">SemiAnalysis: Rubin HBM4 consolidates to SKH 60% / Samsung 30% / Micron 0%</a><span class="arc-date">Feb 11</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#200a0a;color:#e05050">Tom's Hardware</span> <a href="https://www.tomshardware.com/pc-components/dram/sk-hynix-to-spend-usd13-billion-on-the-worlds-largest-hbm-memory-assembly-plant" target="_blank">SK Hynix Breaks Ground on $13B P&T7 HBM Assembly Plant — World's Largest, Operational in 2028</a><span class="arc-date">Jan 15</span></div>
-</div></section>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span> <a href="https://www.kedglobal.com/korean-chipmakers/newsView/ked202601130007" target="_blank">SK Hynix $13B P&T7 — HBM assembly co-located with M15X fab</a><span class="arc-date">Jan 14</span></div>
+</div>
+</section>
 <section id="t3" class="tab-section">
 <div class="cards-grid">
-<article class="card read ref-card" data-id="uec4bc512a">
+<article class="card new-card" data-id="u835b6cfec" onclick="cardClick(this)">
+  <div class="card-header"><span class="badge" style="background:#1a1a1a;color:#888888">Ad Hoc News</span><span class="new-pill">NEW</span><span class="card-date">Apr 4</span></div>
+  <h3 class="card-title"><a href="https://www.ad-hoc-news.de/boerse/news/ueberblick/tsmc-leverages-dominant-position-with-strategic-pricing-and-expansion/69076433" target="_blank">TSMC Kumamoto Fab 2 upgraded to 3nm — Taiwan approval Apr 4</a></h3>
+  <p class="card-detail">Taiwanese authorities approved TSMC Kumamoto Fab 2 to manufacture 3nm chips (upgraded from mid-tier). Targets 15K wafers/month by 2028. Positioned for AI and defense applications.</p>
+  <p class="card-companies">🏢 TSMC</p><p class="card-note"><strong>Note:</strong> ⚠️ Broader news, not a watchlist post. Relevant TSMC context.</p></article>
+<article class="card ref-card read" data-id="uec4bc512a">
   <div class="card-header"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span><span class="card-date">Apr 1</span></div>
   <h3 class="card-title"><a href="https://www.trendforce.com/news/2026/04/01/news-silicon-photonics-race-intensifies-as-tsmc-targets-2026-coupe-production-samsung-eyes-2029-cpo-turnkey/" target="_blank">Silicon Photonics Race: TSMC Targets 2026 COUPE Volume Production, Samsung Trails by 3 Years</a></h3>
   <p class="card-detail">TSMC is accelerating its Co-Packaged Optics COUPE platform toward 2026 volume production, targeting AI switch ASICs as the first adoption wave. Samsung's competing CPO turnkey solution targets 2029, leaving TSMC with a 3-year window to establish optical interconnect dominance. TSMC's COUPE integrates photonic engines with silicon using its own wafer-level bonding process, cutting rack-scale interconnect power 60-80%.</p>
-  <p class="card-companies"><strong>Companies:</strong> TSMC, Samsung, Nvidia, Broadcom, Marvell</p>
-  <p class="card-note"><strong>Note:</strong> CPO cuts optical interconnect power 60-80% vs. pluggable optics. For HBM-intensive AI clusters, rack-scale optical interconnects are the next bottleneck after memory bandwidth. TSMC's CPO lead extends its advanced packaging moat beyond CoWoS into networking silicon.</p>
-</article>
-<article class="card read ref-card" data-id="uad6bf3374">
+  <p class="card-companies">🏢 TSMC, Samsung, Nvidia, Broadcom, Marvell</p><p class="card-note"><strong>Note:</strong> CPO cuts optical interconnect power 60-80% vs. pluggable optics. For HBM-intensive AI clusters, rack-scale optical interconnects are the next bottleneck after memory bandwidth. TSMC's CPO lead extends its advanced packaging moat beyond CoWoS into networking silicon.</p></article>
+<article class="card ref-card read" data-id="uad6bf3374">
   <div class="card-header"><span class="badge" style="background:#1e1500;color:#d47c35">Digitimes</span><span class="card-date">Mar 25</span></div>
   <h3 class="card-title"><a href="https://www.digitimes.com/news/a20260325PD229/sk-hynix-3nm-tsmc-samsung-production.html" target="_blank">SK Hynix Evaluating TSMC 3nm for HBM4E Logic Die to Close Samsung's Performance Gap</a></h3>
   <p class="card-detail">SK Hynix is actively evaluating whether to move its HBM4E logic die production to TSMC's 3nm process, a shift from its current in-house 4nm node. Adopting TSMC 3nm would close the power efficiency gap with Samsung's HBM4E architecture. A 3nm logic die enables 10-15% better power efficiency per GB/s — a critical metric for Nvidia's Feynman accelerator platform requirements.</p>
-  <p class="card-companies"><strong>Companies:</strong> SK Hynix, TSMC, Samsung, Nvidia</p>
-  <p class="card-note"><strong>Note:</strong> SK Hynix outsourcing HBM4E logic to TSMC marks a structural shift in vertical integration strategy. This benefits TSMC's advanced packaging revenue while signaling SK Hynix prioritizes performance differentiation over manufacturing cost control in the HBM race.</p>
-</article>
-<article class="card read ref-card" data-id="u5f0a09fea">
+  <p class="card-companies">🏢 SK Hynix, TSMC, Samsung, Nvidia</p><p class="card-note"><strong>Note:</strong> SK Hynix outsourcing HBM4E logic to TSMC marks a structural shift in vertical integration strategy. This benefits TSMC's advanced packaging revenue while signaling SK Hynix prioritizes performance differentiation over manufacturing cost control in the HBM race.</p></article>
+<article class="card ref-card read" data-id="u8c12a99f1">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 20</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2006665030281081308" target="_blank">Samsung 'going all-in' on advanced packaging to challenge TSMC CoWoS monopoly</a></h3>
+  <p class="card-detail">TSMC invested $7.5B this year (largest ever) to expand CoWoS. CoWoS yield remains 50–60%. Market projected $43B (2025) → $64.3B (2028). Google lowered TPU production target by 1M units after losing CoWoS allocation to Nvidia.</p>
+  <p class="card-companies">🏢 Samsung, TSMC, Nvidia, Google</p><p class="card-note"><strong>Note:</strong> Samsung packaging opportunity is real but TSMC yield and lock-in remain strong moats</p></article>
+<article class="card ref-card read" data-id="u5f0a09fea">
   <div class="card-header"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span><span class="card-date">Mar 18</span></div>
   <h3 class="card-title"><a href="https://www.trendforce.com/news/2026/03/18/news-nvidia-rubin-ultra-and-feynman-reportedly-to-boost-tsmc-soic-besi-applied-materials-tel-to-benefit/" target="_blank">Nvidia Rubin Ultra and Feynman to Drive TSMC SoIC Expansion — Besi, Applied Materials, TEL Key Beneficiaries</a></h3>
   <p class="card-detail">Nvidia's Rubin Ultra and next-gen Feynman AI accelerators are expected to significantly expand TSMC's SoIC (System on Integrated Chips) hybrid bonding capacity. SoIC enables die-to-die stacking without interposers, critical for Nvidia's multi-die chiplet strategy. Equipment makers Besi, Applied Materials, and Tokyo Electron are the primary beneficiaries of SoIC capacity buildout through 2027.</p>
-  <p class="card-companies"><strong>Companies:</strong> Nvidia, TSMC, Besi, Applied Materials, Tokyo Electron</p>
-  <p class="card-note"><strong>Note:</strong> SoIC hybrid bonding adoption with Rubin Ultra and Feynman solidifies TSMC's advanced packaging monopoly for leading AI compute. For AI chip makers evaluating custom silicon, SoIC-compatible chip architecture is becoming a baseline requirement rather than a differentiator.</p>
-</article>
+  <p class="card-companies">🏢 Nvidia, TSMC, Besi, Applied Materials, Tokyo Electron</p><p class="card-note"><strong>Note:</strong> SoIC hybrid bonding adoption with Rubin Ultra and Feynman solidifies TSMC's advanced packaging monopoly for leading AI compute. For AI chip makers evaluating custom silicon, SoIC-compatible chip architecture is becoming a baseline requirement rather than a differentiator.</p></article>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/news/2026/02/25/news-nvidia-gtc-2026-in-focus-feynman-reportedly-on-tsmc-a16-samsung-sk-hynix-to-showcase-hbm4/" target="_blank">Nvidia GTC 2026 Preview: Feynman on TSMC A16, Samsung and SK Hynix to Showcase HBM4</a><span class="arc-date">Feb 25</span></div>
-</div></section>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span> <a href="https://x.com/jukan05/status/1950102624164073553" target="_blank">Morgan Stanley: Nvidia secures 60% of global CoWoS demand in 2026</a><span class="arc-date">Jan 8</span></div>
+</div>
+</section>
 <section id="t4" class="tab-section">
 <div class="cards-grid">
 <article class="card new-card" data-id="u2cc7e0edd" onclick="cardClick(this)">
   <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="new-pill">NEW</span><span class="card-date">Apr 5</span></div>
   <h3 class="card-title"><a href="https://www.kedglobal.com/earnings/newsView/ked202604050001" target="_blank">Samsung Poised to Post Record Quarterly Operating Profit Above $33B in Q1 2026</a></h3>
   <p class="card-detail">Securities firms project Samsung Electronics' Q1 2026 operating profit at ~₩40 trillion ($29.4B), with some forecasting a potential ₩50T+ quarter for the first time ever. The Device Solutions division leads on HBM4 volume ramp and record conventional DRAM pricing. Preliminary results due April 7.</p>
-  <p class="card-companies"><strong>Companies:</strong> Samsung</p>
-  <p class="card-note"><strong>Note:</strong> A ₩50T+ DS quarter would match Samsung's full-year 2024 semiconductor profit in a single quarter — the definitive validation of the HBM supercycle thesis. April 7 prelims are the next major catalyst.</p>
-</article>
-<article class="card read ref-card" data-id="u67bae2c08">
+  <p class="card-companies">🏢 Samsung</p><p class="card-note"><strong>Note:</strong> A ₩50T+ DS quarter would match Samsung's full-year 2024 semiconductor profit in a single quarter — the definitive validation of the HBM supercycle thesis. April 7 prelims are the next major catalyst.</p></article>
+<article class="card ref-card read" data-id="u3d29848d2">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Apr 2</span></div>
+  <h3 class="card-title"><a href="https://www.ubergizmo.com/2026/04/apple-cornering-mobile-dram/" target="_blank">Apple cornering mobile DRAM market — starving Android OEMs</a></h3>
+  <p class="card-detail">Apple using cash balance sheet to buy all available LPDDR at elevated prices. MediaTek & Qualcomm cut 4nm production 20K–30K wafers = 15–20M fewer mobile processors. Samsung raised Galaxy S25 Edge / foldable prices.</p>
+  <p class="card-companies">🏢 Apple, Samsung, Micron, MediaTek, Qualcomm</p><p class="card-note"><strong>Note:</strong> Critical downstream — mobile processor supply crunch may hit Q2/Q3 device availability</p></article>
+<article class="card ref-card read" data-id="u67bae2c08">
   <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="card-date">Apr 2</span></div>
   <h3 class="card-title"><a href="https://www.kedglobal.com/korean-startups/newsView/ked202604020001" target="_blank">Google TurboQuant Boosts AI Memory Efficiency — FuriosaAI CEO Says It Expands, Not Shrinks, Chip Demand</a></h3>
   <p class="card-detail">Google's TurboQuant quantization technique reduces the active memory footprint of AI models, but FuriosaAI CEO June Paik argues it will ultimately increase total demand by making AI economically accessible to a far wider range of deployments. Korean chipmakers broadly hold this view, citing historical precedent from prior efficiency gains that expanded markets rather than contracting them.</p>
-  <p class="card-companies"><strong>Companies:</strong> Google, FuriosaAI, Samsung, SK Hynix</p>
-  <p class="card-note"><strong>Note:</strong> The Jevons paradox has characterized every semiconductor efficiency generation since the transistor. TurboQuant-class optimizations lower inference cost, driving adoption at the margin and net-adding demand — a tailwind for HBM vendors.</p>
-</article>
-<article class="card read ref-card" data-id="u405d8b89c">
+  <p class="card-companies">🏢 Google, FuriosaAI, Samsung, SK Hynix</p><p class="card-note"><strong>Note:</strong> The Jevons paradox has characterized every semiconductor efficiency generation since the transistor. TurboQuant-class optimizations lower inference cost, driving adoption at the margin and net-adding demand — a tailwind for HBM vendors.</p></article>
+<article class="card ref-card read" data-id="u405d8b89c">
   <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="card-date">Mar 31</span></div>
   <h3 class="card-title"><a href="https://www.kedglobal.com/korean-chipmakers/newsView/ked202603310002" target="_blank">Samsung, SK Hynix Shares Drop as Record Chip Prices Stoke End-Demand Concerns</a></h3>
   <p class="card-detail">Samsung and SK Hynix shares fell sharply as investors raised concerns that record memory prices are choking end-device demand. Smartphone and PC OEMs facing 80-95% DRAM cost increases are cutting orders and downgrading memory specs, threatening the consumer electronics volume that underpins blended DRAM margins across both vendors.</p>
-  <p class="card-companies"><strong>Companies:</strong> Samsung, SK Hynix</p>
-  <p class="card-note"><strong>Note:</strong> This is the key bull-to-bear inflection risk in 2026: if HBM/server DRAM stays strong while consumer DRAM craters, blended margin expansion stalls even as HBM revenue records are set. Monitor Q3 consumer DRAM guidance as the critical leading indicator.</p>
-</article>
-<article class="card read ref-card" data-id="uaa222613b">
+  <p class="card-companies">🏢 Samsung, SK Hynix</p><p class="card-note"><strong>Note:</strong> This is the key bull-to-bear inflection risk in 2026: if HBM/server DRAM stays strong while consumer DRAM craters, blended margin expansion stalls even as HBM revenue records are set. Monitor Q3 consumer DRAM guidance as the critical leading indicator.</p></article>
+<article class="card ref-card read" data-id="uc4a205034">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 28</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2035294342961823782" target="_blank">Samsung HBM4E at 16 Gbps forces SKH to evaluate TSMC 3nm</a></h3>
+  <p class="card-detail">Samsung's HBM4E: 16 Gbps (+23% vs HBM4), same power, improved 4nm. SKH's HBM4E originally on 12nm; now evaluating 3nm switch. TSMC 3nm costs 4–5× vs 12nm.</p>
+  <p class="card-companies">🏢 Samsung, SK Hynix, TSMC</p><p class="card-note"><strong>Note:</strong> Node competition on base die accelerating; HBM arms race intensifying</p></article>
+<article class="card ref-card read" data-id="uaa222613b">
   <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom's Hardware</span><span class="card-date">Mar 26</span></div>
   <h3 class="card-title"><a href="https://www.tomshardware.com/pc-components/dram/dram-prices-surge-171-percent-year-over-year-ai-demand-drives-a-higher-yoy-price-increase-than-gold" target="_blank">DRAM Prices Surge 171% Year-Over-Year — Samsung DS on Track for Record Q1 2026 Profit Ahead of April 7 Prelim Results</a></h3>
   <p class="card-detail">DRAM prices have surged 171% year-over-year as of March 2026, outpacing even gold's recent price appreciation. Samsung's Device Solutions division is widely forecast to report approximately ₩40 trillion (~$26.5B) in Q1 2026 operating profit — potentially the largest quarterly figure from a single semiconductor division ever — with preliminary results due April 7.</p>
-  <p class="card-companies"><strong>Companies:</strong> Samsung</p>
-  <p class="card-note"><strong>Note:</strong> A confirmed ₩40T+ DS operating profit would likely exceed Samsung's full-year 2024 semiconductor profit in a single quarter, definitively validating the HBM supercycle. A beat above ₩45T would likely trigger a re-rating of Samsung Electronics, which still trades at a discount to SK Hynix on HBM metrics.</p>
-</article>
-<article class="card read ref-card" data-id="u28b528065">
+  <p class="card-companies">🏢 Samsung</p><p class="card-note"><strong>Note:</strong> A confirmed ₩40T+ DS operating profit would likely exceed Samsung's full-year 2024 semiconductor profit in a single quarter, definitively validating the HBM supercycle. A beat above ₩45T would likely trigger a re-rating of Samsung Electronics, which still trades at a discount to SK Hynix on HBM metrics.</p></article>
+<article class="card ref-card read" data-id="ub273b243f">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 20</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2023977596577538504" target="_blank">Samsung pulls P4 Pyeongtaek completion forward ~3 months to Q4 2026</a></h3>
+  <p class="card-detail">New HBM-dedicated line at P4 using 10nm 6th-gen (1c) DRAM. Planned capacity: 100K–120K wafers/month. Full-scale P4 still expected 2027+.</p>
+  <p class="card-companies">🏢 Samsung</p><p class="card-note"><strong>Note:</strong> P4 is key to easing shortage; any further delay is bearish</p></article>
+<article class="card ref-card read" data-id="ub0b612ebc">
+  <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="card-date">Mar 18</span></div>
+  <h3 class="card-title"><a href="https://www.kedglobal.com/shareholder-value/newsView/ked202603230004_amd" target="_blank">Samsung signs HBM4 supply MOU with AMD at GTC 2026</a></h3>
+  <p class="card-detail">Samsung DS head Jun Young-hyun and AMD CEO Lisa Su signed HBM4 supply MOU on March 18. AMD MI450/MI400 accelerators will use Samsung HBM4.</p>
+  <p class="card-companies">🏢 Samsung, AMD</p><p class="card-note"><strong>Note:</strong> GTC 2026 key inflection; AMD diversifying from SKH dependency</p></article>
+<article class="card ref-card read" data-id="ue97a5f4d3">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 14</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2026592400584618433" target="_blank">Samsung DS raised LPDDR5X price to Apple by 100% — accepted on the spot</a></h3>
+  <p class="card-detail">Samsung DS originally planned a 60% increase for Apple iPhone 17 LPDDR5X. Opened at 100%; Apple accepted immediately without counter-negotiating. 'How desperate smartphone makers are to secure memory inventory.'</p>
+  <p class="card-companies">🏢 Samsung, Apple, Micron</p><p class="card-note"><strong>Note:</strong> 100% price acceptance = extreme supply tightness; watch iPhone 17 BOM impact</p></article>
+<article class="card ref-card read" data-id="u28b528065">
   <div class="card-header"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span><span class="card-date">Mar 9</span></div>
   <h3 class="card-title"><a href="https://www.trendforce.com/news/2026/03/09/news-samsung-sk-hynix-reportedly-tapped-as-nvidia-rubin-hbm4-suppliers-shipments-could-start-in-march/" target="_blank">Samsung and SK Hynix Confirmed as Sole Nvidia Rubin HBM4 Suppliers — Micron Excluded, Shipments Starting March</a></h3>
   <p class="card-detail">TrendForce confirmed Samsung and SK Hynix as the only two HBM4 suppliers for Nvidia's Vera Rubin AI accelerator — Micron has been excluded from the flagship platform. SK Hynix holds approximately 70% of Rubin's HBM4 allocation; Samsung holds 30%. Samsung began commercial HBM4 shipments in February; SK Hynix commercial shipments started in March. Rubin GPUs incorporate 8 HBM4 stacks per chip for 288GB total.</p>
-  <p class="card-companies"><strong>Companies:</strong> Nvidia, Samsung, SK Hynix, Micron</p>
-  <p class="card-note"><strong>Note:</strong> Micron's exclusion from Rubin's initial HBM4 allocation is a critical near-term revenue risk. With Rubin targeting H2 2026 launch and Micron's HBM4 qualification still underway, Micron could miss the initial Rubin cycle entirely — a $3-5B revenue headwind relative to the SK Hynix baseline.</p>
-</article>
+  <p class="card-companies">🏢 Nvidia, Samsung, SK Hynix, Micron</p><p class="card-note"><strong>Note:</strong> Micron's exclusion from Rubin's initial HBM4 allocation is a critical near-term revenue risk. With Rubin targeting H2 2026 launch and Micron's HBM4 qualification still underway, Micron could miss the initial Rubin cycle entirely — a $3-5B revenue headwind relative to the SK Hynix baseline.</p></article>
+<article class="card ref-card read" data-id="ub4db64b01">
+  <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="card-date">Mar 8</span></div>
+  <h3 class="card-title"><a href="https://www.kedglobal.com/korean-chipmakers/newsView/ked202603080004" target="_blank">Nvidia Vera Rubin: Samsung & SK Hynix sole HBM4 suppliers</a></h3>
+  <p class="card-detail">Industry officials confirm only Samsung and SK Hynix will supply HBM4 for Nvidia's Vera Rubin. Rubin Ultra targets 512GB HBM4E per GPU module. Full NVL576 system may need 1TB.</p>
+  <p class="card-companies">🏢 Nvidia, Samsung, SK Hynix</p><p class="card-note"><strong>Note:</strong> Vera Rubin timeline is the most important near-term catalyst for HBM demand</p></article>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#1f1800;color:#d4a535">SemiWiki</span> <a href="https://semiwiki.com/forum/threads/samsung-enlarges-1c-dram-die-size-yields-stuck-at-60.24623/" target="_blank">Samsung Enlarges 1c DRAM Die Size, HBM4 Yields Stuck at ~60% — Elevated Ramp Risk</a><span class="arc-date">Feb 27</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/news/2026/02/26/news-memory-giants-hbm-cleanroom-race-samsung-sk-hynix-fast-track-micron-acquires/" target="_blank">Memory Giants' HBM Cleanroom Race: Samsung and SK Hynix Fast-Track Expansions, Micron Acquires Land</a><span class="arc-date">Feb 26</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/news/2026/02/26/news-apple-reportedly-eyes-chinese-memory-as-leverage-against-samsung-and-sk-hynix-amid-rising-costs/" target="_blank">Apple Reportedly Eyes Chinese CXMT Memory as Leverage Against Samsung and SK Hynix Amid Rising Costs</a><span class="arc-date">Feb 26</span></div>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#12122a;color:#8090d0">SemiAnalysis</span> <a href="https://newsletter.semianalysis.com/p/vera-rubin-extreme-co-design-an-evolution" target="_blank">SemiAnalysis Vera Rubin deep dive: cableless design, 6 co-designed chips, HBM4 at 22TB/s</a><span class="arc-date">Feb 25</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span> <a href="https://x.com/jukan05/status/2016024794312147358" target="_blank">Even 'Whale' Apple Surrenders — Samsung and SK Hynix Hike iPhone LPDDR Prices by Up to 100% QoQ</a><span class="arc-date">Jan 27</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/news/2026/01/27/news-samsung-may-raise-iphone-lpddr-prices-by-over-80-qoq-sk-hynix-reportedly-near-100-increase" target="_blank">Samsung May Raise iPhone LPDDR Prices Over 80% QoQ; SK Hynix Seeking ~100% Increase</a><span class="arc-date">Jan 27</span></div>
-</div></section>
+</div>
+</section>
 <section id="t5" class="tab-section">
 <div class="cards-grid">
-<article class="card read ref-card" data-id="u67bae2c08">
+<article class="card ref-card read" data-id="u67bae2c08">
   <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="card-date">Apr 2</span></div>
   <h3 class="card-title"><a href="https://www.kedglobal.com/korean-startups/newsView/ked202604020001" target="_blank">Google TurboQuant Boosts AI Memory Efficiency — FuriosaAI CEO Says It Expands, Not Shrinks, Chip Demand</a></h3>
   <p class="card-detail">Google's TurboQuant quantization technique reduces the active memory footprint of AI models, but FuriosaAI CEO June Paik argues it will ultimately increase total demand by making AI economically accessible to a far wider range of deployments. Korean chipmakers broadly hold this view, citing historical precedent from prior efficiency gains that expanded markets rather than contracting them.</p>
-  <p class="card-companies"><strong>Companies:</strong> Google, FuriosaAI, Samsung, SK Hynix</p>
-  <p class="card-note"><strong>Note:</strong> The Jevons paradox has characterized every semiconductor efficiency generation since the transistor. TurboQuant-class optimizations lower inference cost, driving adoption at the margin and net-adding demand — a tailwind for HBM vendors.</p>
-</article>
-<article class="card read ref-card" data-id="u405d8b89c">
+  <p class="card-companies">🏢 Google, FuriosaAI, Samsung, SK Hynix</p><p class="card-note"><strong>Note:</strong> The Jevons paradox has characterized every semiconductor efficiency generation since the transistor. TurboQuant-class optimizations lower inference cost, driving adoption at the margin and net-adding demand — a tailwind for HBM vendors.</p></article>
+<article class="card ref-card read" data-id="u405d8b89c">
   <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="card-date">Mar 31</span></div>
   <h3 class="card-title"><a href="https://www.kedglobal.com/korean-chipmakers/newsView/ked202603310002" target="_blank">Samsung, SK Hynix Shares Drop as Record Chip Prices Stoke End-Demand Concerns</a></h3>
   <p class="card-detail">Samsung and SK Hynix shares fell sharply as investors raised concerns that record memory prices are choking end-device demand. Smartphone and PC OEMs facing 80-95% DRAM cost increases are cutting orders and downgrading memory specs, threatening the consumer electronics volume that underpins blended DRAM margins across both vendors.</p>
-  <p class="card-companies"><strong>Companies:</strong> Samsung, SK Hynix</p>
-  <p class="card-note"><strong>Note:</strong> This is the key bull-to-bear inflection risk in 2026: if HBM/server DRAM stays strong while consumer DRAM craters, blended margin expansion stalls even as HBM revenue records are set. Monitor Q3 consumer DRAM guidance as the critical leading indicator.</p>
-</article>
-<article class="card read ref-card" data-id="uad6bf3374">
+  <p class="card-companies">🏢 Samsung, SK Hynix</p><p class="card-note"><strong>Note:</strong> This is the key bull-to-bear inflection risk in 2026: if HBM/server DRAM stays strong while consumer DRAM craters, blended margin expansion stalls even as HBM revenue records are set. Monitor Q3 consumer DRAM guidance as the critical leading indicator.</p></article>
+<article class="card ref-card read" data-id="uc4a205034">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 28</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2035294342961823782" target="_blank">Samsung HBM4E at 16 Gbps forces SKH to evaluate TSMC 3nm</a></h3>
+  <p class="card-detail">Samsung's HBM4E: 16 Gbps (+23% vs HBM4), same power, improved 4nm. SKH's HBM4E originally on 12nm; now evaluating 3nm switch. TSMC 3nm costs 4–5× vs 12nm.</p>
+  <p class="card-companies">🏢 Samsung, SK Hynix, TSMC</p><p class="card-note"><strong>Note:</strong> Node competition on base die accelerating; HBM arms race intensifying</p></article>
+<article class="card ref-card read" data-id="uad6bf3374">
   <div class="card-header"><span class="badge" style="background:#1e1500;color:#d47c35">Digitimes</span><span class="card-date">Mar 25</span></div>
   <h3 class="card-title"><a href="https://www.digitimes.com/news/a20260325PD229/sk-hynix-3nm-tsmc-samsung-production.html" target="_blank">SK Hynix Evaluating TSMC 3nm for HBM4E Logic Die to Close Samsung's Performance Gap</a></h3>
   <p class="card-detail">SK Hynix is actively evaluating whether to move its HBM4E logic die production to TSMC's 3nm process, a shift from its current in-house 4nm node. Adopting TSMC 3nm would close the power efficiency gap with Samsung's HBM4E architecture. A 3nm logic die enables 10-15% better power efficiency per GB/s — a critical metric for Nvidia's Feynman accelerator platform requirements.</p>
-  <p class="card-companies"><strong>Companies:</strong> SK Hynix, TSMC, Samsung, Nvidia</p>
-  <p class="card-note"><strong>Note:</strong> SK Hynix outsourcing HBM4E logic to TSMC marks a structural shift in vertical integration strategy. This benefits TSMC's advanced packaging revenue while signaling SK Hynix prioritizes performance differentiation over manufacturing cost control in the HBM race.</p>
-</article>
-<article class="card read ref-card" data-id="ue04a9d902">
+  <p class="card-companies">🏢 SK Hynix, TSMC, Samsung, Nvidia</p><p class="card-note"><strong>Note:</strong> SK Hynix outsourcing HBM4E logic to TSMC marks a structural shift in vertical integration strategy. This benefits TSMC's advanced packaging revenue while signaling SK Hynix prioritizes performance differentiation over manufacturing cost control in the HBM race.</p></article>
+<article class="card ref-card read" data-id="ue04a9d902">
   <div class="card-header"><span class="badge" style="background:#0a1f0a;color:#4dc728">SK Hynix Newsroom</span><span class="card-date">Mar 24</span></div>
   <h3 class="card-title"><a href="https://news.skhynix.com/sk-hynix-ships-world-first-12-layer-hbm4-samples-to-customers/" target="_blank">SK Hynix Ships World's First 12-Layer HBM4 Samples at 11.7 Gbps — Targeting Nvidia Rubin Platform</a></h3>
   <p class="card-detail">SK Hynix confirmed shipment of 12-layer HBM4 samples achieving 11.7 Gbps — the industry's fastest HBM speed — to key customers including Nvidia. A 16-layer 48GB HBM4 variant is in development targeting H2 2026 mass production, aligned with Nvidia's Rubin GPU schedule. The 12-layer 36GB version is the baseline Rubin NVL72 configuration.</p>
-  <p class="card-companies"><strong>Companies:</strong> SK Hynix, Nvidia</p>
-  <p class="card-note"><strong>Note:</strong> 11.7 Gbps × 1,024-bit bus = 1.5 TB/s per HBM4 stack. Rubin NVL72 with 8 stacks delivers 12 TB/s total — enabling qualitatively new capabilities for inference on 100B+ parameter models at feasible power envelopes.</p>
-</article>
-<article class="card read ref-card" data-id="u0a3d72707">
+  <p class="card-companies">🏢 SK Hynix, Nvidia</p><p class="card-note"><strong>Note:</strong> 11.7 Gbps × 1,024-bit bus = 1.5 TB/s per HBM4 stack. Rubin NVL72 with 8 stacks delivers 12 TB/s total — enabling qualitatively new capabilities for inference on 100B+ parameter models at feasible power envelopes.</p></article>
+<article class="card ref-card read" data-id="ub273b243f">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 20</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2023977596577538504" target="_blank">Samsung pulls P4 Pyeongtaek completion forward ~3 months to Q4 2026</a></h3>
+  <p class="card-detail">New HBM-dedicated line at P4 using 10nm 6th-gen (1c) DRAM. Planned capacity: 100K–120K wafers/month. Full-scale P4 still expected 2027+.</p>
+  <p class="card-companies">🏢 Samsung</p><p class="card-note"><strong>Note:</strong> P4 is key to easing shortage; any further delay is bearish</p></article>
+<article class="card ref-card read" data-id="uc2ec35fc2">
+  <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="card-date">Mar 16</span></div>
+  <h3 class="card-title"><a href="https://www.kedglobal.com/shareholder-value/newsView/ked202603230004" target="_blank">SK Hynix Chairman: memory supply 20% below demand through 2030</a></h3>
+  <p class="card-detail">SK Group Chairman Chey Tae-won warned at GTC 2026 (Mar 16) that global memory supply will remain ~20% below demand through 2030. Met Jensen Huang at the event. SK Hynix to announce additional expansion plans.</p>
+  <p class="card-companies">🏢 SK Hynix, Nvidia</p><p class="card-note"><strong>Note:</strong> Most important macro call of the cycle — from the largest HBM supplier</p></article>
+<article class="card ref-card read" data-id="u0a3d72707">
   <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 12</span></div>
   <h3 class="card-title"><a href="https://x.com/jukan05/status/2032368872255598793" target="_blank">Meta Struggles to Secure HBM for Its MTIA AI Chips Despite Unveiling Four-Generation Roadmap</a></h3>
   <p class="card-detail">Meta launched its MTIA chip roadmap (MTIA 300 at 216GB HBM, MTIA 400 at 288GB, MTIA 450, MTIA 500) but is reportedly unable to secure sufficient HBM supply — Samsung and SK Hynix capacity is committed to Nvidia, Google, and Microsoft through 2026. Meta faces a potential 6-12 month delay in scaling its proprietary AI infrastructure to target volumes.</p>
-  <p class="card-companies"><strong>Companies:</strong> Meta, Samsung, SK Hynix, Nvidia, Google, Microsoft</p>
-  <p class="card-note"><strong>Note:</strong> Meta's HBM squeeze illustrates the structural penalty for late contract commitment. Companies that locked in 2024 supply agreements for 2026 delivery are gatekeepers to AI compute scale. Latecomers face allocation queues, not market rates, and the queue does not clear until 2027.</p>
-</article>
-<article class="card read ref-card" data-id="u546f76fae">
+  <p class="card-companies">🏢 Meta, Samsung, SK Hynix, Nvidia, Google, Microsoft</p><p class="card-note"><strong>Note:</strong> Meta's HBM squeeze illustrates the structural penalty for late contract commitment. Companies that locked in 2024 supply agreements for 2026 delivery are gatekeepers to AI compute scale. Latecomers face allocation queues, not market rates, and the queue does not clear until 2027.</p></article>
+<article class="card ref-card read" data-id="u45bb7c878">
+  <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="card-date">Mar 10</span></div>
+  <h3 class="card-title"><a href="https://www.kedglobal.com/korean-chipmakers/newsView/ked202603100011" target="_blank">SK Hynix delivers final HBM4 samples to Nvidia — full shipments from Q2 2026</a></h3>
+  <p class="card-detail">SK Hynix submitted final HBM4 samples refined through Q4 2025 design modifications to meet 11.7 Gbps. Full-scale shipments to Nvidia expected from Q2 2026.</p>
+  <p class="card-companies">🏢 SK Hynix, Nvidia</p><p class="card-note"><strong>Note:</strong> Final sample submission is last step before qual; watch for shipment confirmation</p></article>
+<article class="card ref-card read" data-id="u546f76fae">
   <div class="card-header"><span class="badge" style="background:#0a1f0a;color:#4dc728">SK Hynix Newsroom</span><span class="card-date">Mar 10</span></div>
   <h3 class="card-title"><a href="https://news.skhynix.com/1c-lpddr6-development-2026/" target="_blank">SK Hynix Develops World's First 1c LPDDR6 — 10.7 Gbps, 33% Faster and 20% More Efficient Than LPDDR5X</a></h3>
   <p class="card-detail">SK Hynix announced the development of 16Gb 1c (6th-gen 10nm-class) LPDDR6 achieving 10.7 Gbps — 33% faster and 20% more power-efficient than LPDDR5X. The chip features a sub-channel architecture and Dynamic Voltage/Frequency Scaling for on-device AI workloads. Mass production preparations target H1 2026 with customer shipments in H2 2026.</p>
-  <p class="card-companies"><strong>Companies:</strong> SK Hynix</p>
-  <p class="card-note"><strong>Note:</strong> LPDDR6 at 10.7 Gbps with 20% power efficiency gain is a meaningful inflection for on-device AI — enabling flagship smartphones and edge inference devices to run larger models without thermal throttling. SK Hynix's first-mover position here mirrors its HBM4 lead in the data center segment.</p>
-</article>
-<article class="card read ref-card" data-id="u28b528065">
+  <p class="card-companies">🏢 SK Hynix</p><p class="card-note"><strong>Note:</strong> LPDDR6 at 10.7 Gbps with 20% power efficiency gain is a meaningful inflection for on-device AI — enabling flagship smartphones and edge inference devices to run larger models without thermal throttling. SK Hynix's first-mover position here mirrors its HBM4 lead in the data center segment.</p></article>
+<article class="card ref-card read" data-id="u28b528065">
   <div class="card-header"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span><span class="card-date">Mar 9</span></div>
   <h3 class="card-title"><a href="https://www.trendforce.com/news/2026/03/09/news-samsung-sk-hynix-reportedly-tapped-as-nvidia-rubin-hbm4-suppliers-shipments-could-start-in-march/" target="_blank">Samsung and SK Hynix Confirmed as Sole Nvidia Rubin HBM4 Suppliers — Micron Excluded, Shipments Starting March</a></h3>
   <p class="card-detail">TrendForce confirmed Samsung and SK Hynix as the only two HBM4 suppliers for Nvidia's Vera Rubin AI accelerator — Micron has been excluded from the flagship platform. SK Hynix holds approximately 70% of Rubin's HBM4 allocation; Samsung holds 30%. Samsung began commercial HBM4 shipments in February; SK Hynix commercial shipments started in March. Rubin GPUs incorporate 8 HBM4 stacks per chip for 288GB total.</p>
-  <p class="card-companies"><strong>Companies:</strong> Nvidia, Samsung, SK Hynix, Micron</p>
-  <p class="card-note"><strong>Note:</strong> Micron's exclusion from Rubin's initial HBM4 allocation is a critical near-term revenue risk. With Rubin targeting H2 2026 launch and Micron's HBM4 qualification still underway, Micron could miss the initial Rubin cycle entirely — a $3-5B revenue headwind relative to the SK Hynix baseline.</p>
-</article>
+  <p class="card-companies">🏢 Nvidia, Samsung, SK Hynix, Micron</p><p class="card-note"><strong>Note:</strong> Micron's exclusion from Rubin's initial HBM4 allocation is a critical near-term revenue risk. With Rubin targeting H2 2026 launch and Micron's HBM4 qualification still underway, Micron could miss the initial Rubin cycle entirely — a $3-5B revenue headwind relative to the SK Hynix baseline.</p></article>
+<article class="card ref-card read" data-id="ub4db64b01">
+  <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="card-date">Mar 8</span></div>
+  <h3 class="card-title"><a href="https://www.kedglobal.com/korean-chipmakers/newsView/ked202603080004" target="_blank">Nvidia Vera Rubin: Samsung & SK Hynix sole HBM4 suppliers</a></h3>
+  <p class="card-detail">Industry officials confirm only Samsung and SK Hynix will supply HBM4 for Nvidia's Vera Rubin. Rubin Ultra targets 512GB HBM4E per GPU module. Full NVL576 system may need 1TB.</p>
+  <p class="card-companies">🏢 Nvidia, Samsung, SK Hynix</p><p class="card-note"><strong>Note:</strong> Vera Rubin timeline is the most important near-term catalyst for HBM demand</p></article>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/news/2026/02/26/news-memory-giants-hbm-cleanroom-race-samsung-sk-hynix-fast-track-micron-acquires/" target="_blank">Memory Giants' HBM Cleanroom Race: Samsung and SK Hynix Fast-Track Expansions, Micron Acquires Land</a><span class="arc-date">Feb 26</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/news/2026/02/26/news-apple-reportedly-eyes-chinese-memory-as-leverage-against-samsung-and-sk-hynix-amid-rising-costs/" target="_blank">Apple Reportedly Eyes Chinese CXMT Memory as Leverage Against Samsung and SK Hynix Amid Rising Costs</a><span class="arc-date">Feb 26</span></div>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#12122a;color:#8090d0">SemiAnalysis</span> <a href="https://newsletter.semianalysis.com/p/vera-rubin-extreme-co-design-an-evolution#hbm4-split" target="_blank">SemiAnalysis: Rubin HBM4 consolidates to SKH 60% / Samsung 30% / Micron 0%</a><span class="arc-date">Feb 11</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span> <a href="https://x.com/jukan05/status/2016024794312147358" target="_blank">Even 'Whale' Apple Surrenders — Samsung and SK Hynix Hike iPhone LPDDR Prices by Up to 100% QoQ</a><span class="arc-date">Jan 27</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/news/2026/01/27/news-samsung-may-raise-iphone-lpddr-prices-by-over-80-qoq-sk-hynix-reportedly-near-100-increase" target="_blank">Samsung May Raise iPhone LPDDR Prices Over 80% QoQ; SK Hynix Seeking ~100% Increase</a><span class="arc-date">Jan 27</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#200a0a;color:#e05050">Tom's Hardware</span> <a href="https://www.tomshardware.com/pc-components/dram/sk-hynix-to-spend-usd13-billion-on-the-worlds-largest-hbm-memory-assembly-plant" target="_blank">SK Hynix Breaks Ground on $13B P&T7 HBM Assembly Plant — World's Largest, Operational in 2028</a><span class="arc-date">Jan 15</span></div>
-</div></section>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span> <a href="https://www.kedglobal.com/korean-chipmakers/newsView/ked202601130007" target="_blank">SK Hynix $13B P&T7 — HBM assembly co-located with M15X fab</a><span class="arc-date">Jan 14</span></div>
+</div>
+</section>
 <section id="t6" class="tab-section">
 <div class="cards-grid">
-<article class="card read ref-card" data-id="u1f876ca6e">
+<article class="card ref-card read" data-id="u6bd409da1">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 20</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2011208650619285685" target="_blank">Micron DRAM wafer output flat at ~3.6M wafers in 2026</a></h3>
+  <p class="card-detail">Per Omdia. No significant capacity expansion vs 2025. Can meet only 55–60% of core customer HBM demand. Flat capacity + rising ASP = strong margin story.</p>
+  <p class="card-companies">🏢 Micron</p><p class="card-note"><strong>Note:</strong> Flat capacity is deliberate — maximize price over volume in tight market</p></article>
+<article class="card ref-card read" data-id="u3223d9c17">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 20</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2026839810640589205" target="_blank">Micron recruiting Korean MPE suppliers to ramp Taiwan & Singapore fabs</a></h3>
+  <p class="card-detail">Micron visited Korea for SEMICON Korea 2026 (Feb 11–13). ~10 senior execs met Korean materials/parts/equipment partners. Focus: accelerate HBM equipment delivery and scale materials supply.</p>
+  <p class="card-companies">🏢 Micron, CMTX</p><p class="card-note"><strong>Note:</strong> Korean MPE recruitment signals Micron is serious about closing the capacity gap</p></article>
+<article class="card ref-card read" data-id="u1f876ca6e">
   <div class="card-header"><span class="badge" style="background:#0a1526;color:#3a8dc0">Micron IR</span><span class="card-date">Mar 18</span></div>
   <h3 class="card-title"><a href="https://www.cnbc.com/2026/03/18/micron-mu-q2-earnings-report-2026.html" target="_blank">Micron Q2 FY2026 Earnings: Revenue $23.86B vs. $20.07B Expected — Q3 Guidance $33.5B on HBM and Cloud Surge</a></h3>
   <p class="card-detail">Micron reported fiscal Q2 2026 revenue of $23.86B vs. $20.07B expected, with EPS of $12.20 adjusted vs. $9.31 consensus. Cloud memory revenue rose 160%+ to $7.75B. Q3 FY2026 guidance: ~$33.5B revenue (+200%+ YoY). HBM capacity is sold out through calendar 2026. Micron has exited consumer memory entirely to focus on enterprise and AI applications.</p>
-  <p class="card-companies"><strong>Companies:</strong> Micron</p>
-  <p class="card-note"><strong>Note:</strong> Micron's Q3 guidance trajectory implies annualized revenue near $130B by Q4 FY2026. The consumer memory exit eliminates a margin buffer: if AI capex decelerates in 2027, Micron has no fallback volume — making it the highest-beta memory play.</p>
-</article>
+  <p class="card-companies">🏢 Micron</p><p class="card-note"><strong>Note:</strong> Micron's Q3 guidance trajectory implies annualized revenue near $130B by Q4 FY2026. The consumer memory exit eliminates a margin buffer: if AI capex decelerates in 2027, Micron has no fallback volume — making it the highest-beta memory play.</p></article>
+<article class="card ref-card read" data-id="ue97a5f4d3">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 14</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2026592400584618433" target="_blank">Samsung DS raised LPDDR5X price to Apple by 100% — accepted on the spot</a></h3>
+  <p class="card-detail">Samsung DS originally planned a 60% increase for Apple iPhone 17 LPDDR5X. Opened at 100%; Apple accepted immediately without counter-negotiating. 'How desperate smartphone makers are to secure memory inventory.'</p>
+  <p class="card-companies">🏢 Samsung, Apple, Micron</p><p class="card-note"><strong>Note:</strong> 100% price acceptance = extreme supply tightness; watch iPhone 17 BOM impact</p></article>
+<article class="card ref-card read" data-id="uefae05d81">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 10</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2020679657792901512" target="_blank">Nvidia Vera Rubin HBM4: SKH mid-50%, Samsung mid-20%, Micron ~20%</a></h3>
+  <p class="card-detail">Nvidia set preliminary splits in Dec 2025. Samsung passed qual first at 11.7 Gbps. Note: SemiAnalysis calls Micron share 0% vs jukan05's ~20% — conflicting data points to monitor.</p>
+  <p class="card-companies">🏢 SK Hynix, Samsung, Micron, Nvidia</p><p class="card-note"><strong>Note:</strong> ⚠️ Conflicting data: jukan05 ~20% vs SemiAnalysis 0% for Micron — track for resolution</p></article>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1526;color:#3a8dc0">Micron IR</span> <a href="https://investors.micron.com/news-releases/news-release-details/micron-sets-new-benchmark-worlds-first-high-capacity-256gb" target="_blank">Micron Sets New Benchmark with World's First 256GB LPDDR5X SOCAMM2 — Highest-Capacity LPDRAM Module</a><span class="arc-date">Mar 3</span></div>
-</div></section>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#12122a;color:#8090d0">SemiAnalysis</span> <a href="https://newsletter.semianalysis.com/p/vera-rubin-extreme-co-design-an-evolution#hbm4-split" target="_blank">SemiAnalysis: Rubin HBM4 consolidates to SKH 60% / Samsung 30% / Micron 0%</a><span class="arc-date">Feb 11</span></div>
+</div>
+</section>
 <section id="t8" class="tab-section">
 <div class="cards-grid">
-<article class="card read ref-card" data-id="ue5529c5e9">
+<article class="card ref-card read" data-id="ue5529c5e9">
   <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom's Hardware</span><span class="card-date">Apr 2</span></div>
   <h3 class="card-title"><a href="https://www.tomshardware.com/pc-components/dram/dram-and-nand-contract-prices-to-climb-again-in-q2" target="_blank">DRAM Contract Prices to Jump 63% in Q2, NAND Up 75% — Steepest Back-to-Back Quarterly Increases in History</a></h3>
   <p class="card-detail">TrendForce's Q2 2026 memory pricing survey projects DRAM contract prices +58-63% QoQ and NAND Flash +70-75% QoQ, following Q1's record +90-95% DRAM surge. NAND outpacing DRAM QoQ for the first time signals enterprise SSD demand has become an independent price driver. Hyperscalers hold the bulk of available supply through long-term agreements; consumer channels receive minimal allocation.</p>
-  <p class="card-companies"><strong>Companies:</strong> Samsung, SK Hynix, Micron, Kioxia, Western Digital</p>
-  <p class="card-note"><strong>Note:</strong> NAND QoQ growth exceeding DRAM is significant: enterprise storage demand is now autonomously driving pricing. This extends the upcycle duration and implies NAND ASP upside beyond current consensus models through 2027.</p>
-</article>
-<article class="card read ref-card" data-id="ud62b3b5d2">
+  <p class="card-companies">🏢 Samsung, SK Hynix, Micron, Kioxia, Western Digital</p><p class="card-note"><strong>Note:</strong> NAND QoQ growth exceeding DRAM is significant: enterprise storage demand is now autonomously driving pricing. This extends the upcycle duration and implies NAND ASP upside beyond current consensus models through 2027.</p></article>
+<article class="card ref-card read" data-id="ud62b3b5d2">
   <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom's Hardware</span><span class="card-date">Mar 26</span></div>
   <h3 class="card-title"><a href="https://www.tomshardware.com/pc-components/ssds/phison-ceo-confirms-nand-prices-have-more-than-doubled-and-will-continue-to-rise-all-2026-production-already-sold-out-ssds-facing-pricing-apocalypse-throughout-2027" target="_blank">Phison CEO: All 2026 NAND Production Already Sold Out — Prices Have More Than Doubled, No Relief Before 2027</a></h3>
   <p class="card-detail">Phison CEO Pua Khein-Seng confirmed all 2026 NAND production is fully committed across the industry. Prices have more than doubled over six months; 512Gb TLC spot prices rose nearly 9x in select contracts. New capacity does not come online until late 2027. Phison is deliberately prioritizing enterprise SSD over consumer channels for margin optimization.</p>
-  <p class="card-companies"><strong>Companies:</strong> Phison, Samsung, SK Hynix, Micron, Kioxia, Western Digital</p>
-  <p class="card-note"><strong>Note:</strong> With 2026 NAND fully committed, enterprise SSD buyers face a multi-year pricing escalation with no spot market release valve. Procurement teams should lock in multi-year supply agreements at current contract rates immediately — the spot-to-contract premium will widen materially through 2027.</p>
-</article>
-<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/presscenter/news/20260105-12860.html" target="_blank">Memory Makers Pivot to Server Apps Driving Record Q1 2026 Price Surge — Enterprise SSDs to Overtake Smartphones as Largest NAND Segment</a><span class="arc-date">Jan 5</span></div>
-</div></section>
+  <p class="card-companies">🏢 Phison, Samsung, SK Hynix, Micron, Kioxia, Western Digital</p><p class="card-note"><strong>Note:</strong> With 2026 NAND fully committed, enterprise SSD buyers face a multi-year pricing escalation with no spot market release valve. Procurement teams should lock in multi-year supply agreements at current contract rates immediately — the spot-to-contract premium will widen materially through 2027.</p></article>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/presscenter/news/20260105-12860.html" target="_blank">Memory Makers Pivot to Server Apps Driving Record Q1 2026 Price Surge — Enterprise SSDs to Overtake Smartphone…</a><span class="arc-date">Jan 5</span></div>
+</div>
+</section>
 <section id="t7" class="tab-section">
 <div class="cards-grid">
 <article class="card new-card" data-id="u2cc7e0edd" onclick="cardClick(this)">
   <div class="card-header"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span><span class="new-pill">NEW</span><span class="card-date">Apr 5</span></div>
   <h3 class="card-title"><a href="https://www.kedglobal.com/earnings/newsView/ked202604050001" target="_blank">Samsung Poised to Post Record Quarterly Operating Profit Above $33B in Q1 2026</a></h3>
   <p class="card-detail">Securities firms project Samsung Electronics' Q1 2026 operating profit at ~₩40 trillion ($29.4B), with some forecasting a potential ₩50T+ quarter for the first time ever. The Device Solutions division leads on HBM4 volume ramp and record conventional DRAM pricing. Preliminary results due April 7.</p>
-  <p class="card-companies"><strong>Companies:</strong> Samsung</p>
-  <p class="card-note"><strong>Note:</strong> A ₩50T+ DS quarter would match Samsung's full-year 2024 semiconductor profit in a single quarter — the definitive validation of the HBM supercycle thesis. April 7 prelims are the next major catalyst.</p>
-</article>
+  <p class="card-companies">🏢 Samsung</p><p class="card-note"><strong>Note:</strong> A ₩50T+ DS quarter would match Samsung's full-year 2024 semiconductor profit in a single quarter — the definitive validation of the HBM supercycle thesis. April 7 prelims are the next major catalyst.</p></article>
 <article class="card new-card" data-id="u026c41584" onclick="cardClick(this)">
   <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom's Hardware</span><span class="new-pill">NEW</span><span class="card-date">Apr 5</span></div>
   <h3 class="card-title"><a href="https://www.tomshardware.com/tech-industry/memory-will-consume-30-percent-of-hyperscaler-spending-this-year" target="_blank">Memory Will Consume 30% of Hyperscaler AI Data Center Spending in 2026 — 4x Increase vs. 2023</a></h3>
   <p class="card-detail">SemiAnalysis estimates memory will account for ~30% of total hyperscaler capex in 2026, up from ~8% in 2023. Nvidia receives preferential supply terms well below standard market rates. Memory has overtaken compute silicon as the primary cost driver for AI infrastructure buildout, a structural shift analysts project will persist through 2028.</p>
-  <p class="card-companies"><strong>Companies:</strong> Nvidia, Samsung, SK Hynix, Micron, Google, Microsoft, Amazon, Meta</p>
-  <p class="card-note"><strong>Note:</strong> Memory crossing 30% of hyperscaler capex validates the supercycle thesis at macro scale. Nvidia's preferential pricing creates margin asymmetry — other AI customers absorb full spot premiums while Nvidia's H200/B200 economics improve relative to peers.</p>
-</article>
-<article class="card read ref-card" data-id="u9851e6918">
+  <p class="card-companies">🏢 Nvidia, Samsung, SK Hynix, Micron, Google, Microsoft, Amazon, Meta</p><p class="card-note"><strong>Note:</strong> Memory crossing 30% of hyperscaler capex validates the supercycle thesis at macro scale. Nvidia's preferential pricing creates margin asymmetry — other AI customers absorb full spot premiums while Nvidia's H200/B200 economics improve relative to peers.</p></article>
+<article class="card ref-card read" data-id="u9851e6918">
   <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Apr 2</span></div>
   <h3 class="card-title"><a href="https://x.com/jukan05/status/2039649540085886996" target="_blank">DRAM ETF (NYSE: DRAM) Begins Trading — Direct Investment Vehicle for the Memory Supercycle</a></h3>
   <p class="card-detail">jukan05 notes the Roundhill Memory ETF (NYSE: DRAM) began trading with roughly 75% of its portfolio in Samsung, SK Hynix, and Micron, making it an effective direct proxy for the memory supercycle thesis. For overseas retail investors who face barriers buying Korean stocks directly, this ETF offers accessible exposure. jukan05 highlights the fund's HBM-heavy weighting as particularly meaningful.</p>
-  <p class="card-companies"><strong>Companies:</strong> Samsung, SK Hynix, Micron, Roundhill Investments</p>
-  <p class="card-note"><strong>Note:</strong> Passive ETF inflows mechanically amplify memory-sector momentum during up-cycles. Watch DRAM ETF AUM growth as a secondary signal for institutional conviction in the supercycle thesis.</p>
-</article>
-<article class="card read ref-card" data-id="u31bbcf0bb">
+  <p class="card-companies">🏢 Samsung, SK Hynix, Micron, Roundhill Investments</p><p class="card-note"><strong>Note:</strong> Passive ETF inflows mechanically amplify memory-sector momentum during up-cycles. Watch DRAM ETF AUM growth as a secondary signal for institutional conviction in the supercycle thesis.</p></article>
+<article class="card ref-card read" data-id="u31bbcf0bb">
   <div class="card-header"><span class="badge" style="background:#1a1a1a;color:#909090">PR Newswire</span><span class="card-date">Apr 2</span></div>
   <h3 class="card-title"><a href="https://www.prnewswire.com/news-releases/roundhill-investments-launches-first-ever-memory-etf-dram-302732330.html" target="_blank">Roundhill Launches World's First Memory Semiconductor ETF — NYSE: DRAM</a></h3>
   <p class="card-detail">Roundhill Investments launched the Roundhill Memory ETF (NYSE: DRAM) on April 2, the world's first ETF targeting global memory chip companies. The fund covers DRAM, HBM, NAND, and SSD manufacturers plus their supply chains, beginning with approximately $1 billion AUM. Holdings span Samsung, SK Hynix, Micron, and memory equipment suppliers.</p>
-  <p class="card-companies"><strong>Companies:</strong> Roundhill Investments, Samsung, SK Hynix, Micron</p>
-  <p class="card-note"><strong>Note:</strong> A dedicated memory ETF institutionalizes the supercycle thesis and brings passive inflows to memory-adjacent names. Watch for Hanmi Semiconductor and Amkor valuation re-ratings as ETF AUM grows.</p>
-</article>
-<article class="card read ref-card" data-id="u756f28a6f">
+  <p class="card-companies">🏢 Roundhill Investments, Samsung, SK Hynix, Micron</p><p class="card-note"><strong>Note:</strong> A dedicated memory ETF institutionalizes the supercycle thesis and brings passive inflows to memory-adjacent names. Watch for Hanmi Semiconductor and Amkor valuation re-ratings as ETF AUM grows.</p></article>
+<article class="card ref-card read" data-id="u756f28a6f">
   <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 30</span></div>
   <h3 class="card-title"><a href="https://x.com/jukan05/status/2038872846911648097" target="_blank">GF Securities: Memory Industry — It's Too Early to Be Pessimistic on the Cycle</a></h3>
   <p class="card-detail">jukan05 shares GF Securities report arguing spot pullbacks reflect premium unwinding, not demand inflection. AI server DRAM demand (~37% of total DRAM in 2026, +74% in 2027) underpins the cycle. 2027-2028 LTAs are already priced 25%+ above current Q2 2026 contract rates, capping downside for memory vendors.</p>
-  <p class="card-companies"><strong>Companies:</strong> Samsung, SK Hynix, Micron</p>
-  <p class="card-note"><strong>Note:</strong> LTA floor pricing above current rates is the key insight: supply is pre-sold above spot for 2027-2028. The probability of a hard 2027 landing is lower than consensus fears. This directly challenges the bearish spot-price narrative.</p>
-</article>
-<article class="card read ref-card" data-id="ua176337af">
+  <p class="card-companies">🏢 Samsung, SK Hynix, Micron</p><p class="card-note"><strong>Note:</strong> LTA floor pricing above current rates is the key insight: supply is pre-sold above spot for 2027-2028. The probability of a hard 2027 landing is lower than consensus fears. This directly challenges the bearish spot-price narrative.</p></article>
+<article class="card ref-card read" data-id="ua176337af">
   <div class="card-header"><span class="badge" style="background:#12122a;color:#8090d0">SemiAnalysis</span><span class="card-date">Mar 27</span></div>
   <h3 class="card-title"><a href="https://semianalysis.com/memory-model/" target="_blank">Memory Model Update: HBM4 Custom Base Dies — What Accelerator Makers Are Doing Differently</a></h3>
   <p class="card-detail">SemiAnalysis updated its memory model to reflect HBM4's architectural shift to custom base dies per customer, allowing Nvidia, Google, and AMD to optimize HBM4 logic-die configurations for their specific compute architectures. This marks the end of one-size-fits-all HBM supply and introduces a new tier of differentiation between HBM vendors' technical capabilities.</p>
-  <p class="card-companies"><strong>Companies:</strong> SK Hynix, Samsung, Micron, Nvidia, Google, AMD</p>
-  <p class="card-note"><strong>Note:</strong> Custom HBM4 base dies mean each major AI accelerator vendor gets architecturally distinct memory — creating vendor lock-in dynamics similar to custom TSMC process nodes. Switching HBM suppliers mid-generation becomes technically costly, benefiting the first-mover HBM4 qualification winner.</p>
-</article>
+  <p class="card-companies">🏢 SK Hynix, Samsung, Micron, Nvidia, Google, AMD</p><p class="card-note"><strong>Note:</strong> Custom HBM4 base dies mean each major AI accelerator vendor gets architecturally distinct memory — creating vendor lock-in dynamics similar to custom TSMC process nodes. Switching HBM suppliers mid-generation becomes technically costly, benefiting the first-mover HBM4 qualification winner.</p></article>
+<article class="card ref-card read" data-id="u484a3da1f">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span><span class="card-date">Mar 23</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/1992209835249819925" target="_blank">UBS: Rubin GPU forecast raised to 3M units; SKH to hold ~70% of Nvidia HBM4</a></h3>
+  <p class="card-detail">UBS supply chain: Nvidia 2026 Rubin GPU units revised up to 3M (total 2026 GPU procurement 7.5M). AMD MI450 revised up. OpenAI ASIC revised down from 700K to 500K. SKH ~70% of Nvidia HBM4 share. HBM4 at ~30% premium to HBM3E.</p>
+  <p class="card-companies">🏢 Nvidia, SK Hynix, Samsung, Micron, AMD, AWS</p><p class="card-note"><strong>Note:</strong> 30% HBM4 premium vs HBM3E is the key pricing signal to track</p></article>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#12122a;color:#8090d0">SemiAnalysis</span> <a href="https://newsletter.semianalysis.com/p/vera-rubin-extreme-co-design-an-evolution" target="_blank">SemiAnalysis Vera Rubin deep dive: cableless design, 6 co-designed chips, HBM4 at 22TB/s</a><span class="arc-date">Feb 25</span></div>
 <div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span> <a href="https://x.com/jukan05/status/2018916685957452011" target="_blank">GF Securities: LPDDR and NAND Price Hikes Forcing Smartphone Makers to Downgrade Specs</a><span class="arc-date">Feb 5</span></div>
-<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/presscenter/news/20260105-12860.html" target="_blank">Memory Makers Pivot to Server Apps Driving Record Q1 2026 Price Surge — Enterprise SSDs to Overtake Smartphones as Largest NAND Segment</a><span class="arc-date">Jan 5</span></div>
-</div></section>
-</main>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span> <a href="https://news.skhynix.com/2026-market-outlook-focus-on-the-hbm-led-memory-supercycle/" target="_blank">BofA: 2026 is a DRAM supercycle; revenue +51% YoY; SK Hynix 'Top Pick'</a><span class="arc-date">Jan 29</span></div>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a1f1f;color:#26b8a0">TrendForce</span> <a href="https://www.trendforce.com/presscenter/news/20260105-12860.html" target="_blank">Memory Makers Pivot to Server Apps Driving Record Q1 2026 Price Surge — Enterprise SSDs to Overtake Smartphone…</a><span class="arc-date">Jan 5</span></div>
+<div class="archive-item" style="grid-column:1/-1"><span class="badge" style="background:#0a2318;color:#4dc78a">KED Global</span> <a href="https://www.kedglobal.com/korean-chipmakers/newsView/ked202601050006" target="_blank">Samsung & SK Hynix seeking up to 70% server DRAM price hikes in Q1 2026</a><span class="arc-date">Jan 5</span></div>
+</div>
+</section>
+
 
 <script>
-const ALL_IDS = ["u026c41584", "u2cc7e0edd"];
-const TAB_NEW_IDS = {"t0": ["u026c41584"], "t4": ["u2cc7e0edd"], "t7": ["u2cc7e0edd", "u026c41584"]};
-const STORE_KEY = 'dram_v2';
+const STORAGE_KEY = 'dram_v2';
+const ALL_IDS = ["u026c41584", "u835b6cfec", "u2cc7e0edd"];
+const TAB_NEW_IDS = {"t0": ["u026c41584"], "t1": [], "t2": [], "t3": ["u835b6cfec"], "t4": ["u2cc7e0edd"], "t5": [], "t6": [], "t8": [], "t7": ["u2cc7e0edd", "u026c41584"]};
 
-function getRead() { return JSON.parse(localStorage.getItem(STORE_KEY)||'{}'); }
-function saveRead(r) { localStorage.setItem(STORE_KEY, JSON.stringify(r)); }
+function getRead(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')||{}}catch{return{}}}
+function saveRead(r){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(r))}catch{}}
 
-function markId(id) {
-  document.querySelectorAll('[data-id="'+id+'"]').forEach(el => el.classList.add('read'));
+function markId(id){
+  document.querySelectorAll('[data-id="'+id+'"]').forEach(el=>el.classList.add('read'));
 }
 
-function cardClick(el) {
-  const id = el.dataset.id;
-  const r = getRead(); r[id]=1; saveRead(r);
+function cardClick(el){
+  const id=el.dataset.id;
+  const r=getRead(); r[id]=1; saveRead(r);
   markId(id);
   updateCounter();
   updateTabDots();
 }
 
-function applyRead() {
-  const r = getRead();
-  ALL_IDS.forEach(id => { if(r[id]) markId(id); });
-  updateCounter();
-  updateTabDots();
+function updateCounter(){
+  const r=getRead();
+  const unread=ALL_IDS.filter(id=>!r[id]).length;
+  const chip=document.getElementById('new-count-chip');
+  if(chip)chip.textContent=unread>0?unread+' new':'All read';
 }
 
-function updateCounter() {
-  const r = getRead();
-  const unread = ALL_IDS.filter(id => !r[id]).length;
-  const chip = document.getElementById('new-count-chip');
-  if(chip) chip.textContent = unread > 0 ? unread+' new' : '✓ all read';
-}
-
-function updateTabDots() {
-  const r = getRead();
-  Object.entries(TAB_NEW_IDS).forEach(([tid, ids]) => {
-    const hasUnread = ids.some(id => !r[id]);
-    const dot = document.querySelector('[data-dot="'+tid+'"]');
-    if(dot) dot.style.display = hasUnread ? 'inline-block' : 'none';
+function updateTabDots(){
+  const r=getRead();
+  Object.entries(TAB_NEW_IDS).forEach(([tid,ids])=>{
+    const hasUnread=ids.some(id=>!r[id]);
+    const dot=document.querySelector('[data-dot="'+tid+'"]');
+    if(dot)dot.style.display=hasUnread?'inline-block':'none';
   });
 }
 
-function markAllRead() {
-  const r = getRead();
-  ALL_IDS.forEach(id => { r[id]=1; markId(id); });
+function markAllRead(){
+  const r=getRead();
+  ALL_IDS.forEach(id=>{r[id]=1; markId(id);});
   saveRead(r);
   updateCounter();
   updateTabDots();
 }
 
-function switchTab(btn) {
-  document.querySelectorAll('.tab-bar button').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+function switchTab(btn){
+  document.querySelectorAll('.tab-bar button').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
   btn.classList.add('active');
-  const sec = document.getElementById(btn.dataset.tab);
-  if(sec) sec.classList.add('active');
+  const tid=btn.dataset.tab;
+  const sec=document.getElementById(tid);
+  if(sec)sec.classList.add('active');
+  localStorage.setItem('dram_tab',tid);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  const first = document.querySelector('.tab-bar button');
-  if(first) first.classList.add('active');
-  const firstSec = document.querySelector('.tab-section');
-  if(firstSec) firstSec.classList.add('active');
-  applyRead();
-});
+// Init
+(function(){
+  const r=getRead();
+  ALL_IDS.forEach(id=>{if(r[id])markId(id);});
+  updateCounter();
+  updateTabDots();
+  
+  // Restore last tab or default to t0
+  const lastTab=localStorage.getItem('dram_tab')||'t0';
+  const btn=document.querySelector('[data-tab="'+lastTab+'"]');
+  if(btn)btn.click();
+  else{
+    const first=document.querySelector('.tab-bar button');
+    if(first)first.click();
+  }
+})();
 </script>
 </body>
 </html>

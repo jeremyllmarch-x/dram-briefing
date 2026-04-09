@@ -127,7 +127,7 @@ a:hover{text-decoration:underline}
 <header class="header">
   <span class="header-title">DRAM</span>
   <button class="refresh-btn" onclick="location.reload()" title="Refresh">⟳</button>
-  <span class="chip new-chip" id="new-count-chip">8 new</span>
+  <span class="chip new-chip" id="new-count-chip">17 new</span>
   <span class="chip">📅 Apr 8</span>
   <button class="all-read-btn" onclick="markAllRead()">✓ All</button>
 </header>
@@ -136,7 +136,7 @@ a:hover{text-decoration:underline}
 <button data-tab="t0" onclick="switchTab(this)" style="--tc:#117a8b">AI Chips<span class="tab-dot" data-dot="t0" style=""></span></button>
 <button data-tab="t1" onclick="switchTab(this)" style="--tc:#148f77">LPDDR / DDR / GDDR<span class="tab-dot" data-dot="t1" style=""></span></button>
 <button data-tab="t2" onclick="switchTab(this)" style="--tc:#7d3c98">HBM<span class="tab-dot" data-dot="t2" style=""></span></button>
-<button data-tab="t3" onclick="switchTab(this)" style="--tc:#6c3483">TSMC / Adv. Pkg<span class="tab-dot" data-dot="t3" style="display:none"></span></button>
+<button data-tab="t3" onclick="switchTab(this)" style="--tc:#6c3483">TSMC / Adv. Pkg<span class="tab-dot" data-dot="t3" style=""></span></button>
 <button data-tab="t4" onclick="switchTab(this)" style="--tc:#2e86c1">Samsung<span class="tab-dot" data-dot="t4" style=""></span></button>
 <button data-tab="t5" onclick="switchTab(this)" style="--tc:#1e8449">Hynix<span class="tab-dot" data-dot="t5" style=""></span></button>
 <button data-tab="t6" onclick="switchTab(this)" style="--tc:#a04000">Micron<span class="tab-dot" data-dot="t6" style=""></span></button>
@@ -156,6 +156,24 @@ a:hover{text-decoration:underline}
   <p class="card-companies">🏢 Samsung, SK Hynix, Micron, Nvidia</p>
 <p class="card-note">💡 Aligns with jukan05 16-Hi HBM reporting (Mar 5). Wafer thinning from 50μm to 30μm is key differentiator; SK Hynix MR-MUF leads.</p>
 </article>
+<article class="card new-card" data-id="u636254e9e">
+  <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom&#x27;s Hardware</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 8</span></div>
+  <h3 class="card-title"><a href="https://www.tomshardware.com/tech-industry/semiconductors/intel-joins-elon-musks-terafab-project-intel-is-proud-to-join-the-terafab-project-with-spacex-xai-and-tesla-to-help-refactor-silicon-fab-technology" target="_blank">Intel Joins Musk&#x27;s Terafab as Foundry Partner — $25B AI Chip Megaproject Using Intel 18A Process</a></h3>
+  <p class="card-detail">Intel announced it will join the Terafab project with SpaceX, xAI, and Tesla as foundry partner. Intel contributing its 18A (1.8nm) process node and advanced packaging (EMIB/Foveros) for custom AI and memory chips. Facility planned at Giga Texas campus targeting 100-200B chips/year for robotics, FSD, and data center AI.</p>
+  <p class="card-companies">🏢 Intel, Tesla, SpaceX, xAI, Nvidia, TSMC</p>
+<p class="card-note">💡 New competitive angle vs TSMC. Intel&#x27;s 18A + EMIB packaging for Terafab diversifies AI chip supply away from TSMC; memory demand implications if Terafab scales.</p>
+</article>
+<article class="card new-card" data-id="ucdcbf4afa">
+  <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom&#x27;s Hardware</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 8</span></div>
+  <h3 class="card-title"><a href="https://www.cnbc.com/2026/04/08/tsmc-nvidia-advanced-packaging-intel.html" target="_blank">Nvidia Snaps Up TSMC AI Chip Packaging Capacity as TSMC Expands in U.S. — CoWoS Growing 80% CAGR</a></h3>
+  <p class="card-detail">Nvidia has reserved the majority of TSMC&#x27;s CoWoS capacity, which is growing at 80% CAGR. Capacity so heavily booked that TSMC outsources some steps to ASE and Amkor. TSMC expanding U.S. packaging presence. Intel&#x27;s EMIB and Foveros positioned as overflow alternatives for hyperscalers locked out of CoWoS.</p>
+  <p class="card-companies">🏢 Nvidia, TSMC, Intel, ASE, Amkor</p>
+<p class="card-note">💡 Matches TrendForce Intel EMIB report (Apr 7). TSMC CoWoS at 80% CAGR still insufficient; Nvidia monopolizing supply forces multi-vendor packaging strategy.</p>
+</article>
 <article class="card new-card" data-id="u5031588a6">
   <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span>
 <span class="new-pill" onclick="markRead(this)">NEW</span>
@@ -173,6 +191,15 @@ a:hover{text-decoration:underline}
   <p class="card-detail">Global memory markets expected to remain tight through 2026 as cloud service providers&#x27; aggressive AI infrastructure spending continues to outstrip supply growth for both DRAM and NAND flash. Long-term purchase agreements with suppliers locked in, high-capacity RDIMMs for AI servers are primary procurement target.</p>
   <p class="card-companies">🏢 Samsung, SK Hynix, Micron</p>
 <p class="card-note">💡 Confirms SemiAnalysis &#x27;Memory Mania&#x27; thesis (Feb 6). CSP long-term agreements locking supply = earnings visibility and sustained pricing power.</p>
+</article>
+<article class="card new-card" data-id="u059fc35ff">
+  <div class="card-header"><span class="badge" style="background:#1a1a0a;color:#c8c850">TrendForce</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://www.trendforce.com/news/2026/04/07/news-intel-advanced-packaging-reportedly-gains-traction-vs-tsmc-as-google-amazon-weigh-emib-adoption/" target="_blank">Intel EMIB Advanced Packaging Gains Traction vs TSMC CoWoS — Google, Amazon Weighing Adoption</a></h3>
+  <p class="card-detail">Intel&#x27;s EMIB packaging emerging as competitive alternative to TSMC CoWoS as Google and Amazon reportedly explore adoption for TPU and Trainium ASIC development. TSMC&#x27;s constrained CoWoS capacity (Nvidia locks 60%) drives hyperscalers to seek alternatives. Intel targeting customer commitments by H2 2026, Malaysia packaging complex coming online.</p>
+  <p class="card-companies">🏢 Intel, TSMC, Google, Amazon, Nvidia</p>
+<p class="card-note">💡 Confirms TSMC packaging bottleneck thesis. Intel EMIB as CoWoS alternative for Google/Amazon ASICs could redistribute packaging demand and ease memory integration constraints.</p>
 </article>
 <div class="section-label">📄 Recent (1-30 days)</div>
 <article class="card ref-card read" data-id="uc2510ca5d">
@@ -294,6 +321,42 @@ a:hover{text-decoration:underline}
   <p class="card-companies">🏢 Samsung, SK Hynix, Micron</p>
 <p class="card-note">💡 Contradicts contract strength — spot DDR4 declining while contracts surge 55-60% QoQ. Two-tier market; spot-contract convergence = cycle peak signal.</p>
 </article>
+<article class="card new-card" data-id="u7a7a64f36">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2038381107524284784" target="_blank">Beyond Memory to Non-Memory — Semiconductor Prices Rising Across the Board; Intel and AMD Raising CPU Prices 10-15%</a></h3>
+  <p class="card-detail">jukan05: Price increases spreading from memory to non-memory — analog chips, power semiconductors, communications chips, CPUs all rising. Intel and AMD pursuing 10-15% CPU price hikes. Optical communications component lead times extended from weeks to months. PC OEM lead times stretched from 1-2 weeks to 6 months.</p>
+  <p class="card-companies">🏢 Intel, AMD, Samsung, SK Hynix, Micron</p>
+<p class="card-note">💡 New angle from jukan05. Price inflation spreading from DRAM/NAND to non-memory chips — confirms structural semiconductor-wide supply crunch, not just memory-specific.</p>
+</article>
+<article class="card new-card" data-id="uf0c36e635">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2002671016108253209" target="_blank">Memory Semiconductors to Overtake TSMC in Profitability — Samsung/SK Hynix Gross Margins at 63-67% vs TSMC&#x27;s 60%</a></h3>
+  <p class="card-detail">jukan05: Samsung memory division and SK Hynix gross profit margins reaching 63-67% in Q4, surpassing TSMC&#x27;s guided 60% — first time since Q4 2018. Micron also guiding 67% gross margin. The center of AI shifting from GPU &#x27;training&#x27; to &#x27;inference&#x27; is driving memory demand surge as data storage/retrieval becomes critical.</p>
+  <p class="card-companies">🏢 Samsung, SK Hynix, Micron, TSMC</p>
+<p class="card-note">💡 Confirms Samsung Q1 record thesis. Memory margins overtaking TSMC foundry margins = structural repricing of memory industry; inference-driven demand shift is key catalyst.</p>
+</article>
+<article class="card new-card" data-id="ue348b1558">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2015763182128857510" target="_blank">&#x27;Memoryflation&#x27; Sparks Auto Industry Production Disruption — DDR4 Automotive DRAM Up 1,845% YoY</a></h3>
+  <p class="card-detail">jukan05: &#x27;Memoryflation&#x27; (memory + inflation) shifting from PC/smartphone to automotive. Barclays reports DDR4 DRAM used in vehicles surged 1,845% in Jan vs prior year. Big 3 memory makers focusing on HBM/AI server chips, causing automotive memory supply to plummet. EV manufacturers hit hardest due to higher memory content per vehicle.</p>
+  <p class="card-companies">🏢 Samsung, SK Hynix, Micron</p>
+<p class="card-note">💡 New downstream impact from jukan05. Memoryflation hitting auto industry hardest — 1,845% YoY DDR4 automotive surge; EV makers more exposed than legacy OEMs.</p>
+</article>
+<article class="card new-card" data-id="uc935f839a">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2021727692136321520" target="_blank">China&#x27;s CXMT Hits DRAM Production Capacity Ceiling at 240K Wafers/Month — Equipment Restrictions Stall Expansion</a></h3>
+  <p class="card-detail">jukan05: CXMT has reached peak production at ~240K wafers/month, stalled by U.S. equipment export restrictions. As processes advance into low 10nm, EUV lithography systems are needed but blocked. CXMT capacity roughly half of SK Hynix and one-third of Samsung. Equipment localization efforts could resume expansion from 2027 if China Phase 3 fund succeeds.</p>
+  <p class="card-companies">🏢 CXMT, Samsung, SK Hynix</p>
+<p class="card-note">💡 Contradicts CXMT expansion narrative. Equipment ceiling at 240K wpm means Chinese memory won&#x27;t relieve global shortage near-term; bullish for Big 3 pricing.</p>
+</article>
 <article class="card new-card" data-id="ud69a8c21e">
   <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom&#x27;s Hardware</span>
 <span class="new-pill" onclick="markRead(this)">NEW</span>
@@ -302,6 +365,15 @@ a:hover{text-decoration:underline}
   <p class="card-detail">Analysis of whether memory prices have peaked finds the answer is no — structural contract pricing projected to rise 58-63% QoQ in Q2 2026. While spot prices are declining (DDR4 spot down after 2,200% surge), contract prices for server DRAM continue surging. Memory price increases now flowing through to handset BOM costs and consumer ASPs.</p>
   <p class="card-companies">🏢 Samsung, SK Hynix, Micron</p>
 <p class="card-note">💡 Matches TrendForce Q2 forecast (Apr 2). Contract pricing NOT peaked at 58-63% QoQ; spot weakness is consumer-side noise, not demand inflection.</p>
+</article>
+<article class="card new-card" data-id="u3ad13cd62">
+  <div class="card-header"><span class="badge" style="background:#1a1a0a;color:#c8b850">Digitimes</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://www.digitimes.com/news/a20260407PD209/smartphone-apple-supply-chain-ymtc-cxmt.html" target="_blank">China Intervenes in Memory Supply for Second Time — Convenes CXMT, YMTC to Stabilize Domestic Prices</a></h3>
+  <p class="card-detail">Chinese authorities intervened for a second time, convening CXMT and YMTC to provide &#x27;strategic support&#x27; aimed at stabilizing memory prices for local brands. Apple iPhones sold in China may increasingly adopt YMTC NAND. Apple&#x27;s China sales rose 23% YoY in first 9 weeks of 2026 vs 4% decline in broader smartphone market.</p>
+  <p class="card-companies">🏢 CXMT, YMTC, Apple, Samsung, SK Hynix</p>
+<p class="card-note">💡 Aligns with Apple DRAM cornering strategy (Apr 2). China intervening to protect domestic OEMs while Apple outperforms — geopolitical supply dynamics intensifying.</p>
 </article>
 <div class="section-label">📄 Recent (1-30 days)</div>
 <article class="card ref-card read" data-id="uf34435598">
@@ -468,6 +540,15 @@ a:hover{text-decoration:underline}
   <p class="card-companies">🏢 Samsung, SK Hynix, Micron</p>
 <p class="card-note">💡 Confirms SemiAnalysis &#x27;Memory Mania&#x27; thesis (Feb 6). CSP long-term agreements locking supply = earnings visibility and sustained pricing power.</p>
 </article>
+<article class="card new-card" data-id="u6a399323f">
+  <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom&#x27;s Hardware</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://www.igorslab.de/en/cxmt-shifts-20-percent-of-dram-capacity-to-hbm3-chinas-ai-strategy-gets-a-memory-upgrade/" target="_blank">CXMT Shifts 20% of DRAM Capacity to HBM3 — China&#x27;s AI Strategy Gets Memory Upgrade but Commodity DRAM Tightens</a></h3>
+  <p class="card-detail">CXMT converting ~20% of total production (~60K wafers) to HBM3, reducing DDR5/LPDDR5X output for PCs and notebooks. HBM3 targets Huawei Ascend AI chip integration. Key challenge: yields constrained by lack of EUV, relying on multi-patterning. CXMT also pursuing $4.2B IPO to fund expansion including new Shanghai mega-fab.</p>
+  <p class="card-companies">🏢 CXMT, Huawei, Samsung, SK Hynix, Micron</p>
+<p class="card-note">💡 Cross-references CXMT ceiling report. HBM3 pivot tightens commodity DRAM further; but yields without EUV remain uncertain — net bullish for Big 3 HBM monopoly.</p>
+</article>
 <div class="section-label">📄 Recent (1-30 days)</div>
 <article class="card ref-card read" data-id="uc2510ca5d">
   <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom&#x27;s Hardware</span>
@@ -600,6 +681,34 @@ a:hover{text-decoration:underline}
 
 <section id="t3" class="tab-section">
 <div class="cards-grid">
+<div class="section-label">🔴 New</div>
+<article class="card new-card" data-id="u636254e9e">
+  <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom&#x27;s Hardware</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 8</span></div>
+  <h3 class="card-title"><a href="https://www.tomshardware.com/tech-industry/semiconductors/intel-joins-elon-musks-terafab-project-intel-is-proud-to-join-the-terafab-project-with-spacex-xai-and-tesla-to-help-refactor-silicon-fab-technology" target="_blank">Intel Joins Musk&#x27;s Terafab as Foundry Partner — $25B AI Chip Megaproject Using Intel 18A Process</a></h3>
+  <p class="card-detail">Intel announced it will join the Terafab project with SpaceX, xAI, and Tesla as foundry partner. Intel contributing its 18A (1.8nm) process node and advanced packaging (EMIB/Foveros) for custom AI and memory chips. Facility planned at Giga Texas campus targeting 100-200B chips/year for robotics, FSD, and data center AI.</p>
+  <p class="card-companies">🏢 Intel, Tesla, SpaceX, xAI, Nvidia, TSMC</p>
+<p class="card-note">💡 New competitive angle vs TSMC. Intel&#x27;s 18A + EMIB packaging for Terafab diversifies AI chip supply away from TSMC; memory demand implications if Terafab scales.</p>
+</article>
+<article class="card new-card" data-id="ucdcbf4afa">
+  <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom&#x27;s Hardware</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 8</span></div>
+  <h3 class="card-title"><a href="https://www.cnbc.com/2026/04/08/tsmc-nvidia-advanced-packaging-intel.html" target="_blank">Nvidia Snaps Up TSMC AI Chip Packaging Capacity as TSMC Expands in U.S. — CoWoS Growing 80% CAGR</a></h3>
+  <p class="card-detail">Nvidia has reserved the majority of TSMC&#x27;s CoWoS capacity, which is growing at 80% CAGR. Capacity so heavily booked that TSMC outsources some steps to ASE and Amkor. TSMC expanding U.S. packaging presence. Intel&#x27;s EMIB and Foveros positioned as overflow alternatives for hyperscalers locked out of CoWoS.</p>
+  <p class="card-companies">🏢 Nvidia, TSMC, Intel, ASE, Amkor</p>
+<p class="card-note">💡 Matches TrendForce Intel EMIB report (Apr 7). TSMC CoWoS at 80% CAGR still insufficient; Nvidia monopolizing supply forces multi-vendor packaging strategy.</p>
+</article>
+<article class="card new-card" data-id="u059fc35ff">
+  <div class="card-header"><span class="badge" style="background:#1a1a0a;color:#c8c850">TrendForce</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://www.trendforce.com/news/2026/04/07/news-intel-advanced-packaging-reportedly-gains-traction-vs-tsmc-as-google-amazon-weigh-emib-adoption/" target="_blank">Intel EMIB Advanced Packaging Gains Traction vs TSMC CoWoS — Google, Amazon Weighing Adoption</a></h3>
+  <p class="card-detail">Intel&#x27;s EMIB packaging emerging as competitive alternative to TSMC CoWoS as Google and Amazon reportedly explore adoption for TPU and Trainium ASIC development. TSMC&#x27;s constrained CoWoS capacity (Nvidia locks 60%) drives hyperscalers to seek alternatives. Intel targeting customer commitments by H2 2026, Malaysia packaging complex coming online.</p>
+  <p class="card-companies">🏢 Intel, TSMC, Google, Amazon, Nvidia</p>
+<p class="card-note">💡 Confirms TSMC packaging bottleneck thesis. Intel EMIB as CoWoS alternative for Google/Amazon ASICs could redistribute packaging demand and ease memory integration constraints.</p>
+</article>
 <div class="section-label">📄 Recent (1-30 days)</div>
 <article class="card ref-card read" data-id="u5417a4f56">
   <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom&#x27;s Hardware</span>
@@ -704,6 +813,24 @@ a:hover{text-decoration:underline}
   <p class="card-companies">🏢 Samsung, SK Hynix</p>
 <p class="card-note">💡 Aligns with UBS Rubin forecast (Mar 23). 30B Gb combined HBM shipments confirms multi-year structural demand, not cyclical blip.</p>
 </article>
+<article class="card new-card" data-id="u7a7a64f36">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2038381107524284784" target="_blank">Beyond Memory to Non-Memory — Semiconductor Prices Rising Across the Board; Intel and AMD Raising CPU Prices 10-15%</a></h3>
+  <p class="card-detail">jukan05: Price increases spreading from memory to non-memory — analog chips, power semiconductors, communications chips, CPUs all rising. Intel and AMD pursuing 10-15% CPU price hikes. Optical communications component lead times extended from weeks to months. PC OEM lead times stretched from 1-2 weeks to 6 months.</p>
+  <p class="card-companies">🏢 Intel, AMD, Samsung, SK Hynix, Micron</p>
+<p class="card-note">💡 New angle from jukan05. Price inflation spreading from DRAM/NAND to non-memory chips — confirms structural semiconductor-wide supply crunch, not just memory-specific.</p>
+</article>
+<article class="card new-card" data-id="uc935f839a">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2021727692136321520" target="_blank">China&#x27;s CXMT Hits DRAM Production Capacity Ceiling at 240K Wafers/Month — Equipment Restrictions Stall Expansion</a></h3>
+  <p class="card-detail">jukan05: CXMT has reached peak production at ~240K wafers/month, stalled by U.S. equipment export restrictions. As processes advance into low 10nm, EUV lithography systems are needed but blocked. CXMT capacity roughly half of SK Hynix and one-third of Samsung. Equipment localization efforts could resume expansion from 2027 if China Phase 3 fund succeeds.</p>
+  <p class="card-companies">🏢 CXMT, Samsung, SK Hynix</p>
+<p class="card-note">💡 Contradicts CXMT expansion narrative. Equipment ceiling at 240K wpm means Chinese memory won&#x27;t relieve global shortage near-term; bullish for Big 3 pricing.</p>
+</article>
 <article class="card new-card" data-id="u1120263a0">
   <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom&#x27;s Hardware</span>
 <span class="new-pill" onclick="markRead(this)">NEW</span>
@@ -712,6 +839,24 @@ a:hover{text-decoration:underline}
   <p class="card-detail">South Korean institutional &#x27;super-individual&#x27; traders (top 1%) are preferring SK Hynix over Samsung following Samsung&#x27;s record Q1 guidance. While Samsung OP hit 57.2T won, top traders see SK Hynix&#x27;s HBM leadership and ~68% operating margins as the better risk-reward play in the memory supercycle.</p>
   <p class="card-companies">🏢 Samsung, SK Hynix</p>
 <p class="card-note">💡 New signal. Smart money favoring SK Hynix over Samsung despite Samsung&#x27;s record — purer AI/HBM exposure and higher margins preferred.</p>
+</article>
+<article class="card new-card" data-id="u3ad13cd62">
+  <div class="card-header"><span class="badge" style="background:#1a1a0a;color:#c8b850">Digitimes</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://www.digitimes.com/news/a20260407PD209/smartphone-apple-supply-chain-ymtc-cxmt.html" target="_blank">China Intervenes in Memory Supply for Second Time — Convenes CXMT, YMTC to Stabilize Domestic Prices</a></h3>
+  <p class="card-detail">Chinese authorities intervened for a second time, convening CXMT and YMTC to provide &#x27;strategic support&#x27; aimed at stabilizing memory prices for local brands. Apple iPhones sold in China may increasingly adopt YMTC NAND. Apple&#x27;s China sales rose 23% YoY in first 9 weeks of 2026 vs 4% decline in broader smartphone market.</p>
+  <p class="card-companies">🏢 CXMT, YMTC, Apple, Samsung, SK Hynix</p>
+<p class="card-note">💡 Aligns with Apple DRAM cornering strategy (Apr 2). China intervening to protect domestic OEMs while Apple outperforms — geopolitical supply dynamics intensifying.</p>
+</article>
+<article class="card new-card" data-id="u6a399323f">
+  <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom&#x27;s Hardware</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://www.igorslab.de/en/cxmt-shifts-20-percent-of-dram-capacity-to-hbm3-chinas-ai-strategy-gets-a-memory-upgrade/" target="_blank">CXMT Shifts 20% of DRAM Capacity to HBM3 — China&#x27;s AI Strategy Gets Memory Upgrade but Commodity DRAM Tightens</a></h3>
+  <p class="card-detail">CXMT converting ~20% of total production (~60K wafers) to HBM3, reducing DDR5/LPDDR5X output for PCs and notebooks. HBM3 targets Huawei Ascend AI chip integration. Key challenge: yields constrained by lack of EUV, relying on multi-patterning. CXMT also pursuing $4.2B IPO to fund expansion including new Shanghai mega-fab.</p>
+  <p class="card-companies">🏢 CXMT, Huawei, Samsung, SK Hynix, Micron</p>
+<p class="card-note">💡 Cross-references CXMT ceiling report. HBM3 pivot tightens commodity DRAM further; but yields without EUV remain uncertain — net bullish for Big 3 HBM monopoly.</p>
 </article>
 <div class="section-label">📄 Recent (1-30 days)</div>
 <article class="card ref-card read" data-id="u2b199ffc0">
@@ -896,6 +1041,24 @@ a:hover{text-decoration:underline}
   <p class="card-companies">🏢 Samsung, SK Hynix, Micron</p>
 <p class="card-note">💡 Confirms SemiAnalysis &#x27;Memory Mania&#x27; thesis (Feb 6). CSP long-term agreements locking supply = earnings visibility and sustained pricing power.</p>
 </article>
+<article class="card new-card" data-id="u7a7a64f36">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2038381107524284784" target="_blank">Beyond Memory to Non-Memory — Semiconductor Prices Rising Across the Board; Intel and AMD Raising CPU Prices 10-15%</a></h3>
+  <p class="card-detail">jukan05: Price increases spreading from memory to non-memory — analog chips, power semiconductors, communications chips, CPUs all rising. Intel and AMD pursuing 10-15% CPU price hikes. Optical communications component lead times extended from weeks to months. PC OEM lead times stretched from 1-2 weeks to 6 months.</p>
+  <p class="card-companies">🏢 Intel, AMD, Samsung, SK Hynix, Micron</p>
+<p class="card-note">💡 New angle from jukan05. Price inflation spreading from DRAM/NAND to non-memory chips — confirms structural semiconductor-wide supply crunch, not just memory-specific.</p>
+</article>
+<article class="card new-card" data-id="uc935f839a">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2021727692136321520" target="_blank">China&#x27;s CXMT Hits DRAM Production Capacity Ceiling at 240K Wafers/Month — Equipment Restrictions Stall Expansion</a></h3>
+  <p class="card-detail">jukan05: CXMT has reached peak production at ~240K wafers/month, stalled by U.S. equipment export restrictions. As processes advance into low 10nm, EUV lithography systems are needed but blocked. CXMT capacity roughly half of SK Hynix and one-third of Samsung. Equipment localization efforts could resume expansion from 2027 if China Phase 3 fund succeeds.</p>
+  <p class="card-companies">🏢 CXMT, Samsung, SK Hynix</p>
+<p class="card-note">💡 Contradicts CXMT expansion narrative. Equipment ceiling at 240K wpm means Chinese memory won&#x27;t relieve global shortage near-term; bullish for Big 3 pricing.</p>
+</article>
 <article class="card new-card" data-id="u1120263a0">
   <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom&#x27;s Hardware</span>
 <span class="new-pill" onclick="markRead(this)">NEW</span>
@@ -904,6 +1067,24 @@ a:hover{text-decoration:underline}
   <p class="card-detail">South Korean institutional &#x27;super-individual&#x27; traders (top 1%) are preferring SK Hynix over Samsung following Samsung&#x27;s record Q1 guidance. While Samsung OP hit 57.2T won, top traders see SK Hynix&#x27;s HBM leadership and ~68% operating margins as the better risk-reward play in the memory supercycle.</p>
   <p class="card-companies">🏢 Samsung, SK Hynix</p>
 <p class="card-note">💡 New signal. Smart money favoring SK Hynix over Samsung despite Samsung&#x27;s record — purer AI/HBM exposure and higher margins preferred.</p>
+</article>
+<article class="card new-card" data-id="u3ad13cd62">
+  <div class="card-header"><span class="badge" style="background:#1a1a0a;color:#c8b850">Digitimes</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://www.digitimes.com/news/a20260407PD209/smartphone-apple-supply-chain-ymtc-cxmt.html" target="_blank">China Intervenes in Memory Supply for Second Time — Convenes CXMT, YMTC to Stabilize Domestic Prices</a></h3>
+  <p class="card-detail">Chinese authorities intervened for a second time, convening CXMT and YMTC to provide &#x27;strategic support&#x27; aimed at stabilizing memory prices for local brands. Apple iPhones sold in China may increasingly adopt YMTC NAND. Apple&#x27;s China sales rose 23% YoY in first 9 weeks of 2026 vs 4% decline in broader smartphone market.</p>
+  <p class="card-companies">🏢 CXMT, YMTC, Apple, Samsung, SK Hynix</p>
+<p class="card-note">💡 Aligns with Apple DRAM cornering strategy (Apr 2). China intervening to protect domestic OEMs while Apple outperforms — geopolitical supply dynamics intensifying.</p>
+</article>
+<article class="card new-card" data-id="u6a399323f">
+  <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom&#x27;s Hardware</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://www.igorslab.de/en/cxmt-shifts-20-percent-of-dram-capacity-to-hbm3-chinas-ai-strategy-gets-a-memory-upgrade/" target="_blank">CXMT Shifts 20% of DRAM Capacity to HBM3 — China&#x27;s AI Strategy Gets Memory Upgrade but Commodity DRAM Tightens</a></h3>
+  <p class="card-detail">CXMT converting ~20% of total production (~60K wafers) to HBM3, reducing DDR5/LPDDR5X output for PCs and notebooks. HBM3 targets Huawei Ascend AI chip integration. Key challenge: yields constrained by lack of EUV, relying on multi-patterning. CXMT also pursuing $4.2B IPO to fund expansion including new Shanghai mega-fab.</p>
+  <p class="card-companies">🏢 CXMT, Huawei, Samsung, SK Hynix, Micron</p>
+<p class="card-note">💡 Cross-references CXMT ceiling report. HBM3 pivot tightens commodity DRAM further; but yields without EUV remain uncertain — net bullish for Big 3 HBM monopoly.</p>
 </article>
 <div class="section-label">📄 Recent (1-30 days)</div>
 <article class="card ref-card read" data-id="u2b199ffc0">
@@ -1086,6 +1267,42 @@ a:hover{text-decoration:underline}
   <p class="card-companies">🏢 Samsung, SK Hynix, Micron, Nvidia</p>
 <p class="card-note">💡 New angle from jukan05. SK Hynix dominates HBM4 but lags eSSD; Samsung only vendor across both HBM4 + eSSD for Vera Rubin.</p>
 </article>
+<article class="card new-card" data-id="u7a7a64f36">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2038381107524284784" target="_blank">Beyond Memory to Non-Memory — Semiconductor Prices Rising Across the Board; Intel and AMD Raising CPU Prices 10-15%</a></h3>
+  <p class="card-detail">jukan05: Price increases spreading from memory to non-memory — analog chips, power semiconductors, communications chips, CPUs all rising. Intel and AMD pursuing 10-15% CPU price hikes. Optical communications component lead times extended from weeks to months. PC OEM lead times stretched from 1-2 weeks to 6 months.</p>
+  <p class="card-companies">🏢 Intel, AMD, Samsung, SK Hynix, Micron</p>
+<p class="card-note">💡 New angle from jukan05. Price inflation spreading from DRAM/NAND to non-memory chips — confirms structural semiconductor-wide supply crunch, not just memory-specific.</p>
+</article>
+<article class="card new-card" data-id="uc935f839a">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2021727692136321520" target="_blank">China&#x27;s CXMT Hits DRAM Production Capacity Ceiling at 240K Wafers/Month — Equipment Restrictions Stall Expansion</a></h3>
+  <p class="card-detail">jukan05: CXMT has reached peak production at ~240K wafers/month, stalled by U.S. equipment export restrictions. As processes advance into low 10nm, EUV lithography systems are needed but blocked. CXMT capacity roughly half of SK Hynix and one-third of Samsung. Equipment localization efforts could resume expansion from 2027 if China Phase 3 fund succeeds.</p>
+  <p class="card-companies">🏢 CXMT, Samsung, SK Hynix</p>
+<p class="card-note">💡 Contradicts CXMT expansion narrative. Equipment ceiling at 240K wpm means Chinese memory won&#x27;t relieve global shortage near-term; bullish for Big 3 pricing.</p>
+</article>
+<article class="card new-card" data-id="u3ad13cd62">
+  <div class="card-header"><span class="badge" style="background:#1a1a0a;color:#c8b850">Digitimes</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://www.digitimes.com/news/a20260407PD209/smartphone-apple-supply-chain-ymtc-cxmt.html" target="_blank">China Intervenes in Memory Supply for Second Time — Convenes CXMT, YMTC to Stabilize Domestic Prices</a></h3>
+  <p class="card-detail">Chinese authorities intervened for a second time, convening CXMT and YMTC to provide &#x27;strategic support&#x27; aimed at stabilizing memory prices for local brands. Apple iPhones sold in China may increasingly adopt YMTC NAND. Apple&#x27;s China sales rose 23% YoY in first 9 weeks of 2026 vs 4% decline in broader smartphone market.</p>
+  <p class="card-companies">🏢 CXMT, YMTC, Apple, Samsung, SK Hynix</p>
+<p class="card-note">💡 Aligns with Apple DRAM cornering strategy (Apr 2). China intervening to protect domestic OEMs while Apple outperforms — geopolitical supply dynamics intensifying.</p>
+</article>
+<article class="card new-card" data-id="u6a399323f">
+  <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom&#x27;s Hardware</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://www.igorslab.de/en/cxmt-shifts-20-percent-of-dram-capacity-to-hbm3-chinas-ai-strategy-gets-a-memory-upgrade/" target="_blank">CXMT Shifts 20% of DRAM Capacity to HBM3 — China&#x27;s AI Strategy Gets Memory Upgrade but Commodity DRAM Tightens</a></h3>
+  <p class="card-detail">CXMT converting ~20% of total production (~60K wafers) to HBM3, reducing DDR5/LPDDR5X output for PCs and notebooks. HBM3 targets Huawei Ascend AI chip integration. Key challenge: yields constrained by lack of EUV, relying on multi-patterning. CXMT also pursuing $4.2B IPO to fund expansion including new Shanghai mega-fab.</p>
+  <p class="card-companies">🏢 CXMT, Huawei, Samsung, SK Hynix, Micron</p>
+<p class="card-note">💡 Cross-references CXMT ceiling report. HBM3 pivot tightens commodity DRAM further; but yields without EUV remain uncertain — net bullish for Big 3 HBM monopoly.</p>
+</article>
 <div class="section-label">📄 Recent (1-30 days)</div>
 <article class="card ref-card read" data-id="u2b199ffc0">
   <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom&#x27;s Hardware</span>
@@ -1186,6 +1403,33 @@ a:hover{text-decoration:underline}
   <p class="card-detail">Samsung Electronics issued Q1 2026 earnings guidance projecting 57.2T won operating profit (~$37.9B) on 133T won revenue, crushing consensus of 38.1T won OP and 117T won revenue. This represents an 8-fold YoY increase driven by memory chip pricing power amid AI demand. Full results due April 30.</p>
   <p class="card-companies">🏢 Samsung, SK Hynix, Micron</p>
 <p class="card-note">💡 Confirms jukan05 Q1 forecast (Apr 7). Samsung OP 8x YoY = definitive supercycle proof; memory pricing power at unprecedented levels.</p>
+</article>
+<article class="card new-card" data-id="u7a7a64f36">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2038381107524284784" target="_blank">Beyond Memory to Non-Memory — Semiconductor Prices Rising Across the Board; Intel and AMD Raising CPU Prices 10-15%</a></h3>
+  <p class="card-detail">jukan05: Price increases spreading from memory to non-memory — analog chips, power semiconductors, communications chips, CPUs all rising. Intel and AMD pursuing 10-15% CPU price hikes. Optical communications component lead times extended from weeks to months. PC OEM lead times stretched from 1-2 weeks to 6 months.</p>
+  <p class="card-companies">🏢 Intel, AMD, Samsung, SK Hynix, Micron</p>
+<p class="card-note">💡 New angle from jukan05. Price inflation spreading from DRAM/NAND to non-memory chips — confirms structural semiconductor-wide supply crunch, not just memory-specific.</p>
+</article>
+<article class="card new-card" data-id="uf0c36e635">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2002671016108253209" target="_blank">Memory Semiconductors to Overtake TSMC in Profitability — Samsung/SK Hynix Gross Margins at 63-67% vs TSMC&#x27;s 60%</a></h3>
+  <p class="card-detail">jukan05: Samsung memory division and SK Hynix gross profit margins reaching 63-67% in Q4, surpassing TSMC&#x27;s guided 60% — first time since Q4 2018. Micron also guiding 67% gross margin. The center of AI shifting from GPU &#x27;training&#x27; to &#x27;inference&#x27; is driving memory demand surge as data storage/retrieval becomes critical.</p>
+  <p class="card-companies">🏢 Samsung, SK Hynix, Micron, TSMC</p>
+<p class="card-note">💡 Confirms Samsung Q1 record thesis. Memory margins overtaking TSMC foundry margins = structural repricing of memory industry; inference-driven demand shift is key catalyst.</p>
+</article>
+<article class="card new-card" data-id="ue348b1558">
+  <div class="card-header"><span class="badge" style="background:#0d1e36;color:#5b9bd5">X/@jukan05</span>
+<span class="new-pill" onclick="markRead(this)">NEW</span>
+<span class="card-date">Apr 7</span></div>
+  <h3 class="card-title"><a href="https://x.com/jukan05/status/2015763182128857510" target="_blank">&#x27;Memoryflation&#x27; Sparks Auto Industry Production Disruption — DDR4 Automotive DRAM Up 1,845% YoY</a></h3>
+  <p class="card-detail">jukan05: &#x27;Memoryflation&#x27; (memory + inflation) shifting from PC/smartphone to automotive. Barclays reports DDR4 DRAM used in vehicles surged 1,845% in Jan vs prior year. Big 3 memory makers focusing on HBM/AI server chips, causing automotive memory supply to plummet. EV manufacturers hit hardest due to higher memory content per vehicle.</p>
+  <p class="card-companies">🏢 Samsung, SK Hynix, Micron</p>
+<p class="card-note">💡 New downstream impact from jukan05. Memoryflation hitting auto industry hardest — 1,845% YoY DDR4 automotive surge; EV makers more exposed than legacy OEMs.</p>
 </article>
 <article class="card new-card" data-id="u1120263a0">
   <div class="card-header"><span class="badge" style="background:#200a0a;color:#e05050">Tom&#x27;s Hardware</span>
